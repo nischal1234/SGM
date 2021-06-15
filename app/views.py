@@ -104,3 +104,4 @@ def view_guards(request):
 		return render(request,'app/view_guard.html',{'employee':employeesdata})
 	else:
 		return render(request, 'app/login.html')
+
