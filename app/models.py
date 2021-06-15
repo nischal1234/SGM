@@ -15,7 +15,7 @@ class Employee(models.Model):
     snumber=models.CharField(max_length=13)
 
 
-    
+#save function    
     def datainp(last_ip):
         Employee.save()
 
