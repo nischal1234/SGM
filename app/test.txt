@@ -1,0 +1,26 @@
+Employee.objects.create(
+			firstname=fname,
+			middlename=mname,
+			lastname=lname,
+			permanent_address=paddress,
+			temporary_address=taddress,
+			dateofbirth=dob,
+			joindate=joindate,
+			expyear=exyear,
+			pnumber=pnumber,
+			snumber=snumber,
+			citizenship=citizenship)
+
+
+Employee.firstname=fname,
+
+		Employee.middlename=mname,
+		Employee.lastname=lname,
+		Employee.permanent_address=paddress,
+		Employee.temporary_address=taddress,
+		Employee.dateofbirth=dob,
+		Employee.joindate=joindate,
+		Employee.expyear=exyear,
+		Employee.pnumber=pnumber,
+		Employee.snumber=snumber,
+		Employee.citizenship=citizenship

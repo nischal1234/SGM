@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.hashers import  check_password
 #from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password
@@ -60,6 +61,7 @@ def dashboard(request):
 @csrf_exempt
 @login_required(login_url='login')
 def guard_add(request):
+	
 	if request.method=='POST':
 		fname=request.POST.get('fname')
 		mname=request.POST.get('sname')
@@ -71,8 +73,22 @@ def guard_add(request):
 		exyear=request.POST.get('exyear')
 		pnumber=request.POST.get('pnumber')
 		snumber=request.POST.get('snumber')
-		Employee.objects.create(firstname=fname,middlename=mname,lastname=lname,permanent_address=paddress,temporary_address=taddress,dateofbirth=dob,joindate=joindate,expyear=exyear,pnumber=pnumber,snumber=snumber)
-		Employee.save()
+		citizenship=request.POST.get('citinum')
+		ins=Employee()
+		Employee.objects.create(
+			firstname=fname,
+			middlename=mname,
+			lastname=lname,
+			permanent_address=paddress,
+			temporary_address=taddress,
+			dateofbirth=dob,
+			joindate=joindate,
+			expyear=exyear,
+			pnumber=pnumber,
+			snumber=snumber,
+			citizenship=citizenship)
+		
+		ins.save()
 
 		return render(
             'app/guard_add.html',
