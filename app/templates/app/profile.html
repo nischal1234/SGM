@@ -1,0 +1,31 @@
+{% extends 'app/sidebar.html' %} {% block body %}
+
+<div id="layoutSidenav_content">
+   <main>
+      <div class="container-fluid px-4">
+         <h1 class="mt-4">View Guards</h1>
+
+         <div class="card mb-4">
+            <div class="card-body">
+               All saved guards information are listed here!! id is {{data.id}}
+               name is {{data.firstname}} having citizen number as
+               {{data.citizenship}}
+            </div>
+         </div>
+         <div class="card mb-4">
+            <div class="card-header">
+               <i class="fas fa-table me-1"></i>
+               Data
+            </div>
+            <div class="card-body">
+               <table id="datatablesSimple">
+                  <thead>
+                     <tr></tr>
+                  </thead>
+               </table>
+            </div>
+         </div>
+      </div>
+   </main>
+</div>
+{%endblock%}

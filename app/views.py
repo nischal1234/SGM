@@ -53,7 +53,10 @@ def logoutUser(request):
 login_required(login_url='login')
 def dashboard(request):
 	if request.user.is_authenticated:
-		return render(request,'app/dashboard.html')
+		count = Employee.objects.count()
+		return render(request,'app/dashboard.html',{
+        'count' : count
+    })
 	else:
 		return render(request, 'app/login.html')
 
@@ -112,7 +115,7 @@ def get_ip_address(request):
 
 
 
-login_required(login_url='login')
+@login_required(login_url='login')
 def view_guards(request):
 	if request.user.is_authenticated:
 		employeesdata=Employee.objects.all()
@@ -120,4 +123,11 @@ def view_guards(request):
 		return render(request,'app/view_guard.html',{'employee':employeesdata})
 	else:
 		return render(request, 'app/login.html')
+@login_required(login_url='login')
+def profile(request,id):
+	profileid=id
+	data=Employee.objects.get(pk=id)
+	#print(data)
+#	return render(request,'app/profile.html',{'profileid':profileid})
+	return render(request,'app/profile.html',{'data':data})
 
