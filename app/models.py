@@ -14,6 +14,17 @@ class Employee(models.Model):
     pnumber=models.CharField(max_length=13)
     snumber=models.CharField(max_length=13)
     citizenship=models.CharField(max_length=15)
+    fathername=models.CharField(max_length=30)
+    grandfathername=models.CharField(max_length=30)
+    education=models.CharField(max_length=30)
+    assignpost=models.CharField(max_length=30)
+    pastcname=models.CharField(max_length=40)
+    pannumber=models.CharField(max_length=20)
+    height=models.CharField(max_length=5)
+    skincolor=models.CharField(max_length=10)
+    gender=models.CharField(max_length=10)
+    maritual=models.CharField(max_length=10)
+    bloodgroup=models.CharField(max_length=5)
 
 
 
@@ -22,4 +33,4 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.firstname + " " + self.lastname
-   
+#
