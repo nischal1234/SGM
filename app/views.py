@@ -77,6 +77,17 @@ def guard_add(request):
 		pnumber=request.POST.get('pnumber')
 		snumber=request.POST.get('snumber')
 		citizenship=request.POST.get('citinum')
+		fathername=request.POST.get('fathername')
+		grandfather=request.POST.get('gname')
+		education=request.POST.get('eduquali')
+		assign=request.POST.get('apost')
+		pastcompany=request.POST.get('pastcname')
+		pan=request.POST.get('pannumber')
+		height=request.POST.get('hguard')
+		skin=request.POST.get('skincolor')
+		gender=request.POST.get('gender')
+		maritual=request.POST.get('mstatus')
+		blood=request.POST.get('bgroup')
 		ins=Employee()
 		Employee.objects.create(
 			firstname=fname,
@@ -89,7 +100,19 @@ def guard_add(request):
 			expyear=exyear,
 			pnumber=pnumber,
 			snumber=snumber,
-			citizenship=citizenship)
+			citizenship=citizenship,
+			fathername=fathername,
+			grandfathername=grandfather,
+			education=education,
+			assignpost=assign,
+			pastcname=pastcompany,
+			pannumber=pan,
+			height=height,
+			skincolor=skin,
+			gender=gender,
+			maritual=maritual,
+			bloodgroup=blood	
+			)
 		
 		ins.save()
 
