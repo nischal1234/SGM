@@ -1,0 +1,103 @@
+{% extends 'app/sidebar.html' %} {% block body %}
+
+<div id="layoutSidenav_content">
+   <main>
+      <div class="container-fluid px-4">
+         <h1 class="mt-4" style="background-color="red"">Feedback</h1>
+
+         <div class="card mb-4">
+            <div class="card-body">
+               Please fill up the given form if any error occurs!!
+            </div>
+         </div>
+         <div class="card mb-4">
+            <div class="card-header">
+               <i class="fas fa-table me-1"></i>
+               Problems .....
+            </div>
+            <form method="POST" action="{% url 'add_company' %}">
+               {% csrf_token %}
+               <div class="row">
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Page Name:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        id="pagename"
+                        placeholder="Enter Page Name"
+                        name="pagename"
+                        required
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Topic:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        id="topic"
+                        placeholder="Enter Topic Name"
+                        name="topic"
+                     />
+                  </div>
+               </div>
+                  <div class="row">
+                     <div class="col">
+                            <label for="text" class="mr-sm-2" >Details:</label>
+                            <input
+                            style="height: 100px;" 
+                            type="text"
+                            class="form-control"
+                            id="details"
+                            placeholder="Enter Detail problems"
+                            name="details"
+                            required
+                            />
+                        </div>
+                     
+                    </div>  
+
+
+                         
+                  
+
+                     <div class="row">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                           <input
+                              class="btn btn-primary"
+                              type="submit"
+                              name="submit"
+                              value="Send"
+                              style="position: absolute; right: 0"
+                              href="#"
+                           />
+                     </div>
+                    
+               </div>
+            </form>
+              
+         </div>
+      </div>
+   </main>
+   <footer class="py-4 bg-light mt-auto">
+      <div class="container-fluid px-4">
+         <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Developed by Nischal</div>
+            <div>
+               <a href="#">Privacy Policy</a>
+               &middot;
+               <a href="#">Terms &amp; Conditions</a>
+            </div>
+         </div>
+      </div>
+   </footer>
+</div>
+
+
+
+
+
+
+ {%endblock%}
+
+
+

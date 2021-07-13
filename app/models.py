@@ -2,6 +2,21 @@ from django.db import models
 from phone_field import PhoneField
 
 # Create your models here.
+class Company(models.Model):
+    companyname=models.CharField(max_length=30)
+    location=models.CharField(max_length=40)
+    district=models.CharField(max_length=10)
+    website=models.URLField(max_length=20)
+    telephone=models.CharField(max_length=15)
+    pannumber=models.CharField(max_length=15)
+
+    
+    def __str__(self):
+        return self.companyname
+
+
+
+
 class Employee(models.Model):
     firstname=models.CharField(max_length=30)
     middlename=models.CharField(max_length=30)
@@ -25,6 +40,9 @@ class Employee(models.Model):
     gender=models.CharField(max_length=10)
     maritual=models.CharField(max_length=10)
     bloodgroup=models.CharField(max_length=5)
+    
+    
+
 
 
 
@@ -33,4 +51,4 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.firstname + " " + self.lastname
-#
+#company details

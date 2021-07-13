@@ -1,0 +1,136 @@
+{% extends 'app/sidebar.html' %} {% block body %}
+
+<div id="layoutSidenav_content">
+   <main>
+      <div class="container-fluid px-4">
+         <h1 class="mt-4" style="background-color="red"">Add theCompany Details</h1>
+
+         <div class="card mb-4">
+            <div class="card-body">
+               Please add all the details for Company as per given form
+            </div>
+         </div>
+         <div class="card mb-4">
+            <div class="card-header">
+               <i class="fas fa-table me-1"></i>
+               Add the Company detail
+            </div>
+            <form method="POST" action="{% url 'add_company' %}">
+               {% csrf_token %}
+               <div class="row">
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Company Name:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        id="cpname"
+                        placeholder="Enter Company Name"
+                        name="cpname"
+                        required
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Address:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        id="cpaddress"
+                        placeholder="Enter Company Address"
+                        name="cpaddress"
+                     />
+                  </div>
+               </div>
+                  <div class="row">
+                     <div class="col">
+                        <label for="text" class="mr-sm-2">Branch Name:</label>
+                        <input
+                           type="text"
+                           class="form-control"
+                           id="branchname"
+                           placeholder="Enter Branch Name"
+                           name="branchname"
+                           required
+                        />
+                     </div>
+                     <div class="col">
+                            <label for="text" class="mr-sm-2">PAN Number:</label>
+                           <input
+                              type="text"
+                              class="form-control"
+                              id="cppannumber"
+                              placeholder="Enter PAN Number"
+                              name="cppannumber"
+                              required
+                           />
+
+                     </div>
+                  </div>   
+
+                  <div class="row">
+                     <div class="col">
+                            <label for="text" class="mr-sm-2">Website URL:</label>
+                           <input
+                              type="text"
+                              class="form-control"
+                              id="cpwebsite"
+                              placeholder="Enter Website URL"
+                              name="cpwebsite"
+                              
+                           />
+                     </div>
+
+                      <div class="col">
+                            <label for="text" class="mr-sm-2">Phone Number:</label>
+                           <input
+                              type="text"
+                              class="form-control"
+                              id="cpphnnumber"
+                              placeholder="Enter Phone Number"
+                              name="cpphnnumber"
+                              required
+                           />
+                     </div>
+
+
+
+                  </div>         
+                  
+
+                     <div class="row">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                           <input
+                              class="btn btn-primary"
+                              type="submit"
+                              name="submit"
+                              value="Save"
+                              style="position: absolute; right: 0"
+                              href="#"
+                           />
+                     </div>
+                    
+               </div>
+            </form>
+              
+         </div>
+      </div>
+   </main>
+   <footer class="py-4 bg-light mt-auto">
+      <div class="container-fluid px-4">
+         <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Developed by Nischal</div>
+            <div>
+               <a href="#">Privacy Policy</a>
+               &middot;
+               <a href="#">Terms &amp; Conditions</a>
+            </div>
+         </div>
+      </div>
+   </footer>
+</div>
+
+
+
+
+
+
+ {%endblock%}

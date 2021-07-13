@@ -1,8 +1,8 @@
 
 from django.contrib.messages.api import error
-from app.models import Employee
+from app.models import Employee,Company
 from django.shortcuts import render, redirect 
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from django.forms import inlineformset_factory
 from django.contrib.auth.hashers import  check_password
 #from django.contrib.auth.forms import UserCreationForm
@@ -154,3 +154,48 @@ def profile(request,id):
 #	return render(request,'app/profile.html',{'profileid':profileid})
 	return render(request,'app/profile.html',{'data':data})
 
+@login_required(login_url='login')
+def addcompany(request):
+	if request.method=='POST':
+		companyname=request.POST.get('cpname')
+		address=request.POST.get('cpaddress')
+		branchname=request.POST.get('branchname')
+		cppannumber=request.POST.get('cppannumber')
+		cpwebsite=request.POST.get('cpwebsite')
+		cpphnnumber=request.POST.get('cpphnnumber')
+		
+		ins=Company()
+		Company.objects.create(
+			companyname=companyname,
+			location=address,
+			district=branchname,
+			website=cpwebsite,
+			pannumber=cppannumber,
+			telephone=cpphnnumber
+			
+			)
+		
+		ins.save()
+
+		return render(
+            'app/add_company.html',
+            {'message': 'Update Success', })
+
+
+
+	else:
+		return render(request,'app/add_company.html')
+
+@login_required(login_url='login')
+def viewcompany(request):
+	if request.user.is_authenticated:
+		companydata=Company.objects.all()
+
+		return render(request,'app/view_company.html',{'company':companydata})
+	else:
+		return render(request, 'app/login.html')
+
+
+@login_required(login_url='login')
+def feedback(request):
+	return render(request,'app/feedback.html')

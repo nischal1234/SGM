@@ -1,0 +1,75 @@
+{% extends 'app/sidebar.html' %} {% block body %}
+
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">View Company</h1>
+                        
+                        <div class="card mb-4">
+                            <div class="card-body">
+                               All saved company information are listed here!!
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Data
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Company Name</th>
+                                            <th>Address</th>
+                                            <th>Branch Name</th>
+                                            <th>PAN Number</th>
+                                            <th>Website</th>
+                                            <th>Telephone</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Company Name</th>
+                                            <th>Address</th>
+                                            <th>Branch Name</th>
+                                            <th>PAN Number</th>
+                                            <th>Website</th>
+                                            <th>Telephone</th>
+                                            
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                      {% for cp in company %}
+                                        
+                                       <tr>
+                                            <td>{{cp.companyname}}</td>
+                                            <td>{{cp.location}}</td>
+                                            <td>{{cp.district}}</td>
+                                            <td>{{cp.pannumber}}</td>
+                                            <td>{{cp.website}}</td>
+                                            <td>{{cp.telephone}}</td>
+                                            
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Developed by Nischal</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+{%endblock%}
