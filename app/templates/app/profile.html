@@ -1,118 +1,131 @@
 {% extends 'app/sidebar.html' %} {% block body %}
+<section class="home-section">
+   <div id="layoutSidenav_content">
+      <main>
+         
+             <div class="card" style= "padding-left:500px">
+                  <img class="card-img-top-right" src="https://www.w3schools.com/images/w3schools_green.jpg"  style="width: 128px; height: 128px; align: right" alt="Card image cap">
+                  <div class="card-body">
+                     <h5 class="card-title">{{data.firstname}}</h5>
+                    
+                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+               </div>
+         
 
-<div id="layoutSidenav_content">
-   <main>
-      <div class="container-fluid px-4 mt-4">
-         <div class="text-center">
-            <img
-               src="https://www.w3schools.com/images/w3schools_green.jpg"
-               alt="this is image"
-               style="width: 128px; height: 128px; align: center"
-            />
+            <div class="tab">
+               <button class="tablinks" onclick="openCity(event, 'London')">
+                  General Information
+               </button>
+               <button class="tablinks" onclick="openCity(event, 'Paris')">
+                  Documents
+               </button>
+               <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+                  Experinces
+               </button>
+                
+            </div>
+
+            <!-- Tab content -->
+            <div id="London" class="tabcontent">
+               <div class="card">
+                     <div class="card-body">
+                         Name : {{data.firstname}} {{data.middlename}}
+                        {{data.lastname}}
+                      </div>
+               </div>
+               
+                 
+               </h6>
+               <h6>Address:</h6>
+
+               <h6>Permanent: {{data.permanent_address}}</h6>
+               <h6>Temporary : {{data.temporary_address}}</h6>
+               <h6>Date of birth : {{data.dateofbirth}}</h6>
+               <h6>Join Date : {{data.joindate}}</h6>
+               <h6>Experince : {{data.expyear}} years</h6>
+               <h6>Phone Number:</h6>
+               <h6>Primary phone number : {{data.pnumber}}</h6>
+               <h6>Secondary phone number : {{data.snumber}}</h6>
+               <h6>Citizenship Number : {{data.citizenship}}</h6>
+               <h6>Father Name : {{data.fathername}}</h6>
+               <h6>Grand Father Name : {{data.grandfathername}}</h6>
+               <h6>Qualification : {{data.education}}</h6>
+            </div>
+
+            <div id="Paris" class="tabcontent">
+               <h3>Paris</h3>
+               <p>Paris is the capital of France.</p>
+            </div>
+
+            <div id="Tokyo" class="tabcontent">
+               <h3>Tokyo</h3>
+               <p>Tokyo is the capital of Japan.</p>
+            </div>
          </div>
-
-         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'London')">
-               General Information
-            </button>
-            <button class="tablinks" onclick="openCity(event, 'Paris')">
-               Documents
-            </button>
-            <button class="tablinks" onclick="openCity(event, 'Tokyo')">
-               Experinces
-            </button>
-         </div>
-
-         <!-- Tab content -->
-         <div id="London" class="tabcontent">
-            <h5>Name : {{data.firstname}} {{data.middlename}} {{data.lastname}} </h3>
-            <h5>Address:</h3>
-            
-            <h5>Permanent: {{data.permanent_address}}</h3>
-            <h5>Temporary : {{data.temporary_address}}</h3>
-            <h5>Date of birth : {{data.dateofbirth}} </h3>
-            <h5>Join Date : {{data.joindate}} </h3>
-            <h5>Experince : {{data.expyear}} years </h3>
-            <h5>Phone Number:</h5>
-            <h5>Primary phone number : {{data.pnumber}} </h3>
-            <h5>Secondary phone number : {{data.snumber}} </h3>
-            <h5>Citizenship Number : {{data.citizenship}} </h3>
-            <h5>Father Name : {{data.fathername}} </h3>
-            <h5>Grand Father Name : {{data.grandfathername}} </h3>
-            <h5>Qualification : {{data.education}} </h3>
-
-            
-         </div>
-
-         <div id="Paris" class="tabcontent">
-            <h3>Paris</h3>
-            <p>Paris is the capital of France.</p>
-         </div>
-
-         <div id="Tokyo" class="tabcontent">
-            <h3>Tokyo</h3>
-            <p>Tokyo is the capital of Japan.</p>
-         </div>
-      </div>
-   </main>
-</div>
-<style>
-   .tab {
-      overflow: hidden;
-      border: 1px solid #ccc;
-      background-color: #f1f1f1;
-   }
-
-   /* Style the buttons that are used to open the tab content */
-   .tab button {
-      background-color: inherit;
-      float: left;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 14px 16px;
-      transition: 0.3s;
-   }
-
-   /* Change background color of buttons on hover */
-   .tab button:hover {
-      background-color: #ddd;
-   }
-
-   /* Create an active/current tablink class */
-   .tab button.active {
-      background-color: #ccc;
-   }
-
-   /* Style the tab content */
-   .tabcontent {
-      display: none;
-      padding: 6px 12px;
-      border: 1px solid #ccc;
-      border-top: none;
-   }
-</style>
-<script>
-   function openCity(evt, cityName) {
-      // Declare all variables
-      var i, tabcontent, tablinks;
-
-      // Get all elements with class="tabcontent" and hide them
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-         tabcontent[i].style.display = "none";
+         
+      </main>
+   </div>
+   <style>
+      .tab {
+         overflow: hidden;
+         border: 1px solid #ccc;
+         background-color: #f1f1f1;
       }
 
-      // Get all elements with class="tablinks" and remove the class "active"
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-         tablinks[i].className = tablinks[i].className.replace(" active", "");
+      /* Style the buttons that are used to open the tab content */
+      .tab button {
+         background-color: inherit;
+         float: left;
+         border: none;
+         outline: none;
+         cursor: pointer;
+         padding: 14px 16px;
+         transition: 0.3s;
       }
 
-      // Show the current tab, and add an "active" class to the button that opened the tab
-      document.getElementById(cityName).style.display = "block";
-      evt.currentTarget.className += " active";
-   }
-</script>
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+         background-color: #ddd;
+      }
 
+      /* Create an active/current tablink class */
+      .tab button.active {
+         background-color: #ccc;
+      }
+
+      /* Style the tab content */
+      .tabcontent {
+         display: none;
+         padding: 6px 12px;
+         border: 1px solid #ccc;
+         border-top: none;
+      }
+   </style>
+   <script>
+      function openCity(evt, cityName) {
+         // Declare all variables
+         var i, tabcontent, tablinks;
+
+         // Get all elements with class="tabcontent" and hide them
+         tabcontent = document.getElementsByClassName("tabcontent");
+         for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+         }
+
+         // Get all elements with class="tablinks" and remove the class "active"
+         tablinks = document.getElementsByClassName("tablinks");
+         for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(
+               " active",
+               ""
+            );
+         }
+
+         // Show the current tab, and add an "active" class to the button that opened the tab
+         document.getElementById(cityName).style.display = "block";
+         evt.currentTarget.className += " active";
+      }
+   </script>
+</section>
 {%endblock%}

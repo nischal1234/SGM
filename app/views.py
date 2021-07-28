@@ -15,6 +15,7 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.translation import gettext as _
 
 # Create your views here.
 @csrf_exempt
@@ -199,3 +200,32 @@ def viewcompany(request):
 @login_required(login_url='login')
 def feedback(request):
 	return render(request,'app/feedback.html')
+
+@login_required(login_url='login')
+def search(request):
+	ids=request.POST.get('searchopt')
+	print(ids)
+	data=request.POST.get('searchdata')
+	if ids=='Guard':
+		
+		datas=Employee.objects.filter(firstname=data)
+		print(datas)
+		return render(request,'app/search.html',{'datas':datas})
+	elif ids=='Company':
+		datas=Company.objects.filter(companyname=data)
+		return render(request,'app/search.html',{'datas':datas})
+
+	#now use same as above elif statement as ids=='Age Below 50' ,,,,it will works 
+		
+	return render(request,'app/search.html')
+
+
+@login_required(login_url='login')
+def companyprofile(request,id):
+	companyid=id
+	data=Company.objects.get(pk=id)
+	#print(data)
+#	return render(request,'app/profile.html',{'profileid':profileid})
+	return render(request,'app/companyprofile.html',{'data':data})
+
+	

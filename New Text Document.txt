@@ -1,5 +1,240 @@
-pbkdf2_sha256$150000$MuMYdGrq7pUJ$TpNq7sfuT+wFqkn2+1tQx/qhsKjjBa/5zJ8f04M0ud0=
+{% extends 'app/sidebar.html' %} {% block body %}
+ 
+<section class="home-section">
+
+      <div id="layoutSidenav_content">
+         <main>
+            <div class="container-fluid px-4">
+               <h1 class="mt-4" style="background-color="red"">Feedback</h1>
+
+               <div class="card mb-4">
+                  <div class="card-body">
+                     
+                           <div class="input-group">
+                                       <div class="input-select">
+                                          <select data-trigger="" name="choices-single-defaul">
+                                                <option placeholder="">Category</option>
+                                                <option>New Arrivals</option>
+                                                <option>Sale</option>
+                                                <option>Ladies</option>
+                                                <option>Men</option>
+                                                <option>Clothing</option>
+                                                <option>Footwear</option>
+                                                <option>Accessories</option>
+                                          </select> 
+                                       </div>
+                                          <label class="form-label" for="form1">Search</label>
+                                          <input type="search" id="form1" class="form-control" />
+                                    
+                                       
+                                          <button type="button" class="btn btn-primary">
+                                             <i class="bx bx-search"></i>
+                                          </button> 
+                                       </div>
+                           </div>            
+                           
+                  </div>
+                  </div>         
+                           
+               
+               <div class="card mb-4">
+                  <div class="card-header">
+                     <i class="fas fa-table me-1"></i>
+                     Problems .....
+                  </div>
+                  
+                  
+               </div>
+            </div>
+         </main>
+         <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+               <div class="d-flex align-items-center justify-content-between small">
+                  <div class="text-muted">Copyright &copy; Developed by Nischal</div>
+                  <div>
+                     <a href="#">Privacy Policy</a>
+                     &middot;
+                     <a href="#">Terms &amp; Conditions</a>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </div>
 
 
-admin
-hello this is test
+</section>
+{% load static %}
+
+    <script>
+      const choices = new Choices('[data-trigger]',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+      });
+
+    </script>
+
+ {%endblock%}
+
+//..............................................................................................................
+{% extends 'app/sidebar.html' %} {% block body %}
+<section class="home-section">
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4 mt-4">
+            <div class="text-center">
+               <img
+                  src="https://www.w3schools.com/images/w3schools_green.jpg"
+                  alt="this is image"
+                  style="width: 128px; height: 128px; align: center"
+               />
+            </div>
+
+            <div class="tab">
+               <button class="tablinks" onclick="openCity(event, 'London')">
+                  General Information
+               </button>
+               <button class="tablinks" onclick="openCity(event, 'Paris')">
+                  Documents
+               </button>
+               <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+                  Experinces
+               </button>
+            </div>
+
+            <!-- Tab content -->
+            <div id="London" class="tabcontent">
+               <div class="card">
+                     <div class="card-body">
+                         Name : {{data.firstname}} {{data.middlename}}
+                        {{data.lastname}}
+                      </div>
+               </div>
+               
+                 
+               </h6>
+               <h6>Address:</h6>
+
+               <h6>Permanent: {{data.permanent_address}}</h6>
+               <h6>Temporary : {{data.temporary_address}}</h6>
+               <h6>Date of birth : {{data.dateofbirth}}</h6>
+               <h6>Join Date : {{data.joindate}}</h6>
+               <h6>Experince : {{data.expyear}} years</h6>
+               <h6>Phone Number:</h6>
+               <h6>Primary phone number : {{data.pnumber}}</h6>
+               <h6>Secondary phone number : {{data.snumber}}</h6>
+               <h6>Citizenship Number : {{data.citizenship}}</h6>
+               <h6>Father Name : {{data.fathername}}</h6>
+               <h6>Grand Father Name : {{data.grandfathername}}</h6>
+               <h6>Qualification : {{data.education}}</h6>
+            </div>
+
+            <div id="Paris" class="tabcontent">
+               <h3>Paris</h3>
+               <p>Paris is the capital of France.</p>
+            </div>
+
+            <div id="Tokyo" class="tabcontent">
+               <h3>Tokyo</h3>
+               <p>Tokyo is the capital of Japan.</p>
+            </div>
+         </div>
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+      </main>
+   </div>
+   <style>
+      .tab {
+         overflow: hidden;
+         border: 1px solid #ccc;
+         background-color: #f1f1f1;
+      }
+
+      /* Style the buttons that are used to open the tab content */
+      .tab button {
+         background-color: inherit;
+         float: left;
+         border: none;
+         outline: none;
+         cursor: pointer;
+         padding: 14px 16px;
+         transition: 0.3s;
+      }
+
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+         background-color: #ddd;
+      }
+
+      /* Create an active/current tablink class */
+      .tab button.active {
+         background-color: #ccc;
+      }
+
+      /* Style the tab content */
+      .tabcontent {
+         display: none;
+         padding: 6px 12px;
+         border: 1px solid #ccc;
+         border-top: none;
+      }
+   </style>
+   <script>
+      function openCity(evt, cityName) {
+         // Declare all variables
+         var i, tabcontent, tablinks;
+
+         // Get all elements with class="tabcontent" and hide them
+         tabcontent = document.getElementsByClassName("tabcontent");
+         for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+         }
+
+         // Get all elements with class="tablinks" and remove the class "active"
+         tablinks = document.getElementsByClassName("tablinks");
+         for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(
+               " active",
+               ""
+            );
+         }
+
+         // Show the current tab, and add an "active" class to the button that opened the tab
+         document.getElementById(cityName).style.display = "block";
+         evt.currentTarget.className += " active";
+      }
+   </script>
+</section>
+{%endblock%}
+
+

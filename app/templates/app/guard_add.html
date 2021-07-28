@@ -1,5 +1,5 @@
 {% extends 'app/sidebar.html' %} {% block body %}
-
+<section class="home-section">
 <div id="layoutSidenav_content">
    <main>
       <div class="container-fluid px-4">
@@ -102,10 +102,10 @@
                         >Education Qualification:</label
                      >
                      <select name="eduquali"  class="form-control" id="eduquali">
-                        <option>Under grade 8</option>
+                        <option>Normal</option>
                         <option>8 Pass</option>
-                        <option>Under SLC</option>
-                        <option>SLC pass</option>
+                        <option>SLC</option>
+                      
                         <option>+2 Pass</option>
                         <option>+2 Fail</option>
                         <option>Bachelor Pass</option>
@@ -149,9 +149,13 @@
                         >Assigned Designation :</label
                      >
                      <select name="apost" class="form-control" id="apost">
-                        <option>Manager</option>
+                        <option>Messenger</option>
                         <option>Security Guard</option>
-                        <option>Commando</option>
+                        <option>Commander</option>
+                        <option>Trolly Boy</option>
+                        <option>Pharmacy</option>
+                        <option>Rounder</option>
+                        <option>Officer</option>
                      </select>
                   </div>
                </div>
@@ -304,5 +308,5 @@
       </div>
    </footer>
 </div>
-
+</section>
 {%endblock%}
