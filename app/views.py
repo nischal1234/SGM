@@ -216,8 +216,10 @@ def search(request):
 		return render(request,'app/search.html',{'datas':datas})
 
 	#now use same as above elif statement as ids=='Age Below 50' ,,,,it will works 
-		
-	return render(request,'app/search.html')
+	elif ids=='Age Below 50':
+		datas=Employee.objects.filter(dateofbirth=data)
+	message="please select one and enter the keyword"
+	return render(request,'app/search.html',{'message':message})
 
 
 @login_required(login_url='login')

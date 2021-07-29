@@ -41,30 +41,35 @@
                
                <div class="card mb-4">
                   <div class="card-header">
+                  
                       <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>First Name</th>
+                                            <th>Name</th>
                                             <th>Citizenship Number</th>
                                             <th>permanent address</th>
                                             <th>Temporary Address</th>
                                             <th>Date of Birth</th>
+                                            <th>Age</th>
                                             <th>Join Date</th>
                                             <th>phone number</th>
                                             <th>Experince Year</th>
+                                            <th>PAN number</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>First Name</th>
+                                            <th>Name</th>
                                             <th>Citizenship Number</th>
                                             <th>permanent address</th>
                                             <th>Temporary Address</th>
                                             <th>Date of Birth</th>
+                                            <th>Age</th>
                                             <th>Join Date</th>
                                             <th>phone number</th>
                                             <th>Experince Year</th>
-                                            
+                                            <th>PAN number</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -76,9 +81,11 @@
                                             <td>{{empl.permanent_address}}{{empl.district}}</td>
                                             <td>{{empl.temporary_address}}{{empl.location}}</td>
                                             <td>{{empl.dateofbirth}}</td>
+                                            <td>{{empl.age}}</td>
                                             <td>{{empl.joindate}}</td>
                                             <td>{{empl.pnumber}} {{empl.telephone}}</td>
                                             <td>{{empl.expyear}}</td>
+                                            <td>{{empl.cpannumber}}</td>
                                             
                                         </tr>
                                         {% endfor %}
