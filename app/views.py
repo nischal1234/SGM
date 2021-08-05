@@ -203,5 +203,36 @@ def feedback(request):
 
 @login_required(login_url='login')
 def search(request):
+<<<<<<< HEAD
 	output = _("Welcome to my site.")
 	return render(request,'app/search.html',{'output':output})
+=======
+	ids=request.POST.get('searchopt')
+	print(ids)
+	data=request.POST.get('searchdata')
+	if ids=='Guard':
+		
+		datas=Employee.objects.filter(firstname=data)
+		print(datas)
+		return render(request,'app/search.html',{'datas':datas})
+	elif ids=='Company':
+		datas=Company.objects.filter(companyname=data)
+		return render(request,'app/search.html',{'datas':datas})
+
+	#now use same as above elif statement as ids=='Age Below 50' ,,,,it will works 
+	elif ids=='Age Below 50':
+		datas=Employee.objects.filter(dateofbirth=data)
+	message="please select one and enter the keyword"
+	return render(request,'app/search.html',{'message':message})
+
+
+@login_required(login_url='login')
+def companyprofile(request,id):
+	companyid=id
+	data=Company.objects.get(pk=id)
+	#print(data)
+#	return render(request,'app/profile.html',{'profileid':profileid})
+	return render(request,'app/companyprofile.html',{'data':data})
+
+	
+>>>>>>> ebd8965b50ab681546375b23bc10a2a2026a7920

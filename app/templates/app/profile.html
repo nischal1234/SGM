@@ -1,28 +1,35 @@
 {% extends 'app/sidebar.html' %} {% block body %}
+<section class="home-section">
+   <div id="layoutSidenav_content">
+      <main>
+         
+             <div class="card" style= "padding-left:500px">
+                  <img class="card-img-top-right" src="https://www.w3schools.com/images/w3schools_green.jpg"  style="width: 128px; height: 128px; align: right" alt="Card image cap">
+                  <div class="card-body">
+                     <h5 class="card-title">{{data.firstname}}</h5>
+                    
+                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+               </div>
+         
 
-<div id="layoutSidenav_content">
-   <main>
-      <div class="container-fluid px-4 mt-4">
-         <div class="text-center">
-            <img
-               src="https://www.w3schools.com/images/w3schools_green.jpg"
-               alt="this is image"
-               style="width: 128px; height: 128px; align: center"
-            />
-         </div>
+            <div class="tab">
+               <button class="tablinks" onclick="openCity(event, 'London')">
+                  General Information
+               </button>
+               <button class="tablinks" onclick="openCity(event, 'Paris')">
+                  Documents
+               </button>
+               <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+                  Experinces
+               </button>
+                              <!-- Trigger/Open The Modal -->
+               <button id="myBtn">Edit</button>
 
-         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'London')">
-               General Information
-            </button>
-            <button class="tablinks" onclick="openCity(event, 'Paris')">
-               Documents
-            </button>
-            <button class="tablinks" onclick="openCity(event, 'Tokyo')">
-               Experinces
-            </button>
-         </div>
+               <!-- The Modal -->
+               <div id="myModal" class="modal">
 
+<<<<<<< HEAD
          <!-- Tab content -->
          <div id="London" class="tabcontent">
             <h6>
@@ -43,76 +50,469 @@
             <h6>Grand Father Name : {{data.grandfathername}}</h6>
             <h6>Qualification : {{data.education}}</h6>
          </div>
+=======
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                   Edit
+                     <span class="close">&times;</span>
+                    
+                      <form method="POST" action="{% url 'guard_add' %}">
+               {% csrf_token %}
+               <div class="row">
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">First Name:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        id="fname"
+                        placeholder="Enter First Name"
+                        name="fname"
+                        required
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Middle Name:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Middle Name"
+                        name="sname"
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Last Name:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Last Name"
+                        name="lname"
+                        required
+                     />
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Fathers Name:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Father Name"
+                        name="fathername"
+                        required
+                     />
+                  </div>
+>>>>>>> ebd8965b50ab681546375b23bc10a2a2026a7920
 
-         <div id="Paris" class="tabcontent">
-            <h3>Paris</h3>
-            <p>Paris is the capital of France.</p>
-         </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Grandfather Name:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Grandfather Name"
+                        name="gname"
+                        required
+                     />
+                  </div>
+               </div>
 
-         <div id="Tokyo" class="tabcontent">
-            <h3>Tokyo</h3>
-            <p>Tokyo is the capital of Japan.</p>
-         </div>
-      </div>
-   </main>
-</div>
-<style>
-   .tab {
-      overflow: hidden;
-      border: 1px solid #ccc;
-      background-color: #f1f1f1;
-   }
+               <div class="row">
+                  <div class="col">
+                     <label for="text" class="mr-sm-2"
+                        >Permanent Address:</label
+                     >
+                     <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Permanent Address"
+                        name="paddress"
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2"
+                        >Temporary Address:</label
+                     >
+                     <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Temporary Address"
+                        name="taddress"
+                        required
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2"
+                        >Education Qualification:</label
+                     >
+                     <select name="eduquali"  class="form-control" id="eduquali">
+                        <option>Normal</option>
+                        <option>8 Pass</option>
+                        <option>SLC</option>
+                      
+                        <option>+2 Pass</option>
+                        <option>+2 Fail</option>
+                        <option>Bachelor Pass</option>
+                        <option>Bachelor Fail</option>
+                        <option>Master Degree</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Date of Birth:</label>
+                     <input
+                        type="Date"
+                        class="form-control"
+                        placeholder="Enter Date of Birth"
+                        name="dob"
+                        required
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Joining Date:</label>
+                     <input
+                        type="Date"
+                        class="form-control"
+                        placeholder="Enter Joining Date"
+                        name="joindate"
+                        required
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Experince Year:</label>
+                     <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Enter Experince Year"
+                        name="exyear"
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2"
+                        >Assigned Designation :</label
+                     >
+                     <select name="apost" class="form-control" id="apost">
+                        <option>Messenger</option>
+                        <option>Security Guard</option>
+                        <option>Commander</option>
+                        <option>Trolly Boy</option>
+                        <option>Pharmacy</option>
+                        <option>Rounder</option>
+                        <option>Officer</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col">
+                     <label for="text" class="mr-sm-2"
+                        >Primary Contact Number:</label
+                     >
+                     <input
+                        type="tel"
+                        class="form-control"
+                        placeholder="Enter Contact Number"
+                        name="pnumber"
+                        required
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2"
+                        >Secondary Contact Number:</label
+                     >
+                     <input
+                        type="tel"
+                        class="form-control"
+                        placeholder="Enter Contact Number"
+                        name="snumber"
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2"
+                        >Citizenship Number:</label
+                     >
+                     <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Citizenship Number"
+                        name="citinum"
+                        required
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2"
+                        >Past company name:</label
+                     >
+                     <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter past company name"
+                        name="pastcname"
+                        required
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">PAN Number:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter PAN Number "
+                        name="pannumber"
+                        
+                     />
+                  </div>
+               </div>
 
-   /* Style the buttons that are used to open the tab content */
-   .tab button {
-      background-color: inherit;
-      float: left;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 14px 16px;
-      transition: 0.3s;
-   }
+               <div class="row">
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Height of Guard:</label>
+                     <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Enter the height of guard"
+                        name="hguard"
+                     />
+                  </div>
+                  <div class="col">
+                     <label for="text" class="mr-sm-2"
+                        >Select skin color:</label
+                     >
+                     <select name="skincolor"   class="form-control" id="skincolor">
+                        <option>White</option>
+                        <option>Medium White</option>
+                        <option>Dark</option>
+                        <option>Medium Dark</option>
+                        <option>Black</option>
+                        <option>Medium Black</option>
+                     </select>
+                  </div>
 
-   /* Change background color of buttons on hover */
-   .tab button:hover {
-      background-color: #ddd;
-   }
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Select Gender:</label>
+                     <select name="gender"   class="form-control" id="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Others</option>
+                     </select>
+                  </div>
 
-   /* Create an active/current tablink class */
-   .tab button.active {
-      background-color: #ccc;
-   }
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Maritual Status:</label>
+                     <select name="mstatus" class="form-control" id="mstatus">
+                        <option>Married</option>
+                        <option>Unmarried</option>
+                        <option>Single</option>
+                        <option>Divorced</option>
+                        <option>Others</option>
+                     </select>
+                  </div>
 
-   /* Style the tab content */
-   .tabcontent {
-      display: none;
-      padding: 6px 12px;
-      border: 1px solid #ccc;
-      border-top: none;
-   }
+                  <div class="col">
+                     <label for="text" class="mr-sm-2">Blood Group:</label>
+                     <select name="bgroup"  class="form-control" id="bgroup">
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                     </select>
+                  </div>
+                  
+               </div>
+
+               <div class="row">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                     <input
+                        class="btn btn-primary"
+                        type="submit"
+                        name="submit"
+                        value="Save"
+                        style="position: absolute; right: 0"
+                        href="#"
+                     />
+                  </div>
+               </div>
+            </form>
+
+                  </div>
+
+               </div>
+               <!--modal css-->
+               <style>
+               .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(70,100,120); /* Fallback color */
+  background-color: rgba(0.4,0.3,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #372C8C;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 </style>
-<script>
-   function openCity(evt, cityName) {
-      // Declare all variables
-      var i, tabcontent, tablinks;
+                
+            </div>
 
-      // Get all elements with class="tabcontent" and hide them
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-         tabcontent[i].style.display = "none";
+            <!-- Tab content -->
+            <div id="London" class="tabcontent">
+               <div class="card">
+                     <div class="card-body">
+                         Name : {{data.firstname}} {{data.middlename}}
+                        {{data.lastname}}
+                      
+               
+               
+                 
+                        
+                        <h6>Address:</h6>
+
+                        Permanent: {{data.permanent_address}}
+                        Temporary : {{data.temporary_address}}
+                        <h6>Date of birth : {{data.dateofbirth}}</h6>
+                        <h6>Join Date : {{data.joindate}}</h6>
+                        <h6>Experince : {{data.expyear}} years</h6>
+                        <h6>Phone Number:</h6>
+                        <h6>Primary phone number : {{data.pnumber}}</h6>
+                        <h6>Secondary phone number : {{data.snumber}}</h6>
+                        <h6>Citizenship Number : {{data.citizenship}}</h6>
+                        <h6>Father Name : {{data.fathername}}</h6>
+                        <h6>Grand Father Name : {{data.grandfathername}}</h6>
+                        <h6>Qualification : {{data.education}}</h6>
+                     </div>
+            </div>
+
+            </div>
+
+            <div id="Paris" class="tabcontent">
+               <h3>Paris</h3>
+               <p>Paris is the capital of France.</p>
+            </div>
+
+            <div id="Tokyo" class="tabcontent">
+               <h3>Tokyo</h3>
+               <p>Tokyo is the capital of Japan.</p>
+            </div>
+         </div>
+         
+      </main>
+   </div>
+   <style>
+      .tab {
+         overflow: hidden;
+         border: 1px solid #ccc;
+         background-color: #f1f1f1;
       }
 
-      // Get all elements with class="tablinks" and remove the class "active"
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-         tablinks[i].className = tablinks[i].className.replace(" active", "");
+      /* Style the buttons that are used to open the tab content */
+      .tab button {
+         background-color: inherit;
+         float: left;
+         border: none;
+         outline: none;
+         cursor: pointer;
+         padding: 14px 16px;
+         transition: 0.3s;
       }
 
-      // Show the current tab, and add an "active" class to the button that opened the tab
-      document.getElementById(cityName).style.display = "block";
-      evt.currentTarget.className += " active";
-   }
-</script>
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+         background-color: #ddd;
+      }
 
+      /* Create an active/current tablink class */
+      .tab button.active {
+         background-color: #ccc;
+      }
+
+      /* Style the tab content */
+      .tabcontent {
+         display: none;
+         padding: 6px 12px;
+         border: 1px solid #ccc;
+         border-top: none;
+      }
+   </style>
+   <script>
+   //modal function
+   // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+        
+     
+      
+      function openCity(evt, cityName) {
+         // Declare all variables
+         var i, tabcontent, tablinks;
+
+         // Get all elements with class="tabcontent" and hide them
+         tabcontent = document.getElementsByClassName("tabcontent");
+         for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+         }
+
+         // Get all elements with class="tablinks" and remove the class "active"
+         tablinks = document.getElementsByClassName("tablinks");
+         for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(
+               " active",
+               ""
+            );
+         }
+
+         // Show the current tab, and add an "active" class to the button that opened the tab
+         document.getElementById(cityName).style.display = "block";
+         evt.currentTarget.className += " active";
+      }
+   </script>
+</section>
 {%endblock%}

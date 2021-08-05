@@ -1,13 +1,14 @@
-{% extends 'app/sidebar.html' %} {% block body %}
+{% extends 'app/sidebar.html' %} 
+{% block body %}
 <section class="home-section">
-<div id="layoutSidenav_content">
+            <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">View Company</h1>
+                        <h1 class="mt-4">{{data.companyname}}</h1>
                         
                         <div class="card mb-4">
                             <div class="card-body">
-                               All saved company information are listed here!!
+                               Guard working in {{data.companyname}} is listed here!!
                             </div>
                         </div>
                         <div class="card mb-4">
@@ -19,45 +20,47 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Company Name</th>
-                                            <th>Address</th>
-                                            <th>Branch Name</th>
-                                            <th>PAN Number</th>
-                                            <th>Website</th>
-                                            <th>Telephone</th>
+                                            <th>First Name</th>
+                                            <th>Citizenship Number</th>
+                                            <th>permanent address</th>
+                                            <th>Temporary Address</th>
+                                            <th>Date of Birth</th>
+                                            <th>Join Date</th>
+                                            <th>phone number</th>
+                                            <th>Experince Year</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Company Name</th>
-                                            <th>Address</th>
-                                            <th>Branch Name</th>
-                                            <th>PAN Number</th>
-                                            <th>Website</th>
-                                            <th>Telephone</th>
+                                            <th>First Name</th>
+                                            <th>Citizenship Number</th>
+                                            <th>permanent address</th>
+                                            <th>Temporary Address</th>
+                                            <th>Date of Birth</th>
+                                            <th>Join Date</th>
+                                            <th>phone number</th>
+                                            <th>Experince Year</th>
                                             
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                      {% for cp in company %}
+                                      {% for empl in employee %}
                                         
                                        <tr>
-                                      
-
-                                             
                                             <td><a onclick="function userProfile(){
                                               
+                                             
                                               
-                                              
-                                                window.open('{%url 'companyprofile' id=cp.id %}', '_blank');
+                                                window.open('{%url 'profile' id=empl.id %}', '_blank');
 
-                                                };userProfile()" id="{{cp.id}}" style="cursor:pointer;">{{cp.companyname}}</td>
-                                            <td>{{cp.location}}</td>
-                                            <td>{{cp.district}}</td>
-                                            <td>{{cp.pannumber}}</td>
-                                            <td>{{cp.website}}</td>
-                                            <td>{{cp.telephone}}</td>
-                                            
+                                                };userProfile()" id="{{empl.id}}" style="cursor:pointer;">{{empl.firstname}} {{empl.middlename}} {{empl.lastname}}</a></td>
+                                            <td>{{empl.citizenship}}</td>
+                                            <td>{{empl.permanent_address}}</td>
+                                            <td>{{empl.temporary_address}}</td>
+                                            <td>{{empl.dateofbirth}}</td>
+                                            <td>{{empl.joindate}}</td>
+                                            <td>{{empl.pnumber}}</td>
+                                            <td>{{empl.expyear}}</td>
                                             
                                         </tr>
                                         {% endfor %}
@@ -83,3 +86,5 @@
         </div>
         </section>
 {%endblock%}
+
+

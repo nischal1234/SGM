@@ -14,4 +14,8 @@ urlpatterns = [
     path('app/logout',views.logoutUser,name="logout"),
     path('app/profile/<int:id>',views.profile,name='profile'),
     path('app/search',views.search,name='search'),
+<<<<<<< HEAD
+=======
+    path('app/companyprofile/<int:id>',views.companyprofile,name='companyprofile'),
+>>>>>>> ebd8965b50ab681546375b23bc10a2a2026a7920
 ]
