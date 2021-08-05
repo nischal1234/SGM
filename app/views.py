@@ -15,6 +15,7 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.translation import gettext as _
 
 # Create your views here.
 @csrf_exempt
@@ -199,3 +200,8 @@ def viewcompany(request):
 @login_required(login_url='login')
 def feedback(request):
 	return render(request,'app/feedback.html')
+
+@login_required(login_url='login')
+def search(request):
+	output = _("Welcome to my site.")
+	return render(request,'app/search.html',{'output':output})

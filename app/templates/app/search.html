@@ -1,0 +1,99 @@
+{% extends 'app/sidebar.html' %} {% block body %}
+
+<div id="layoutSidenav_content">
+   <main>
+      <div class="container-fluid px-4">
+         <h1 class="mt-4">View Company</h1>
+
+         <div class="card mb-4">
+            <div class="card-body">
+               All saved company information are listed here!!
+                <div class="advance-search">
+            <span class="desc">Advanced Search</span>
+            <div class="row">
+              <div class="input-field">
+                <div class="input-select">
+                  <select data-trigger="" name="choices-single-defaul">
+                    <option placeholder="" value="">ACCESSORIES</option>
+                    <option>ACCESSORIES</option>
+                    <option>SUBJECT B</option>
+                    <option>SUBJECT C</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-field">
+                <div class="input-select">
+                  <select data-trigger="" name="choices-single-defaul">
+                    <option placeholder="" value="">COLOR</option>
+                    <option>GREEN</option>
+                    <option>SUBJECT B</option>
+                    <option>SUBJECT C</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-field">
+                <div class="input-select">
+                  <select data-trigger="" name="choices-single-defaul">
+                    <option placeholder="" value="">SIZE</option>
+                    <option>SIZE</option>
+                    <option>SUBJECT B</option>
+                    <option>SUBJECT C</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row second">
+              <div class="input-field">
+                <div class="input-select">
+                  <select data-trigger="" name="choices-single-defaul">
+                    <option placeholder="" value="">SALE</option>
+                    <option>SALE</option>
+                    <option>SUBJECT B</option>
+                    <option>SUBJECT C</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-field">
+                <div class="input-select">
+                  <select data-trigger="" name="choices-single-defaul">
+                    <option placeholder="" value="">TIME</option>
+                    <option>THIS WEEK</option>
+                    <option>SUBJECT B</option>
+                    <option>SUBJECT C</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-field">
+                <div class="input-select">
+                  <select data-trigger="" name="choices-single-defaul">
+                    <option placeholder="" value="">TYPE</option>
+                    <option>TYPE</option>
+                    <option>SUBJECT B</option>
+                    <option>SUBJECT C</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row third">
+              <div class="input-field">
+                <div class="result-count">
+                  <span>108 </span>results</div>
+                <div class="group-btn">
+                  <button class="btn-delete" id="delete">Reset</button>
+                  <button class="btn-search">Search</button>
+                </div>
+              </div>
+            </div>
+            </div>
+         </div>
+         <div class="card mb-4">
+            <div class="card-header">
+               <i class="fas fa-table me-1"></i>
+               Data
+            </div>
+            <div class="card-body"></div>
+         </div>
+      </div>
+   </main>
+</div>
+{%endblock%}
