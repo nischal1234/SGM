@@ -1,22 +1,284 @@
-{% extends 'app/sidebar.html' %} 
-{% block body %}
+{% extends 'app/sidebar.html' %} {% block body %}
 <section class="home-section">
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">{{data.companyname}}</h1>
-                        
-                        <div class="card mb-4">
-                            <div class="card-body">
-                               Guard working in {{data.companyname}} is listed here!!
-                            </div>
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="card" style="padding-left: 500px">
+            <img
+               class="card-img-top-right"
+               src="https://www.w3schools.com/images/w3schools_green.jpg"
+               style="width: 128px; height: 128px; align: right"
+               alt="Card image cap"
+            />
+            <div class="card-body">
+               <h5 class="card-title">{{data.firstname}}</h5>
+
+               <p class="card-text">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+               </p>
+            </div>
+         </div>
+
+         <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'London')">
+               General Information
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'Paris')">
+               Documents
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+               Employee lists
+            </button>
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn">Edit</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+               <!-- Modal content -->
+               <div class="modal-content">
+                  Edit
+                  <span class="close">&times;</span>
+
+                  <form method="POST" action="{% url 'company_update' data.id%}">
+                     {% csrf_token %}
+                     <div class="row">
+                        <div class="col">
+                           <label for="text" class="mr-sm-2"
+                              >Company Name:</label
+                           >
+                           <input
+                              type="text"
+                              class="form-control"
+                              id="cpname"
+                              placeholder="Enter Company Name"
+                              name="cpname"
+                              required
+                           />
                         </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Data
-                            </div>
-                            <div class="card-body">
+                        <div class="col">
+                           <label for="text" class="mr-sm-2">Address:</label>
+                           <input
+                              type="text"
+                              class="form-control"
+                              id="cpaddress"
+                              placeholder="Enter Company Address"
+                              name="cpaddress"
+                           />
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col">
+                           <label for="text" class="mr-sm-2"
+                              >Branch Name:</label
+                           >
+                           <input
+                              type="text"
+                              class="form-control"
+                              id="branchname"
+                              placeholder="Enter Branch Name"
+                              name="branchname"
+                              required
+                           />
+                        </div>
+                        <div class="col">
+                           <label for="text" class="mr-sm-2">PAN Number:</label>
+                           <input
+                              type="text"
+                              class="form-control"
+                              id="cppannumber"
+                              placeholder="Enter PAN Number"
+                              name="cppannumber"
+                              required
+                           />
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col">
+                           <label for="text" class="mr-sm-2"
+                              >Website URL:</label
+                           >
+                           <input
+                              type="text"
+                              class="form-control"
+                              id="cpwebsite"
+                              placeholder="Enter Website URL"
+                              name="cpwebsite"
+                           />
+                        </div>
+
+                        <div class="col">
+                           <label for="text" class="mr-sm-2"
+                              >Phone Number:</label
+                           >
+                           <input
+                              type="text"
+                              class="form-control"
+                              id="cpphnnumber"
+                              placeholder="Enter Phone Number"
+                              name="cpphnnumber"
+                              required
+                           />
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                           <input
+                              class="btn btn-primary"
+                              type="submit"
+                              name="submit"
+                              value="Save"
+                              style="position: absolute; right: 0"
+                              href="#"
+                           />
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <!--modal css-->
+            <style>
+               .modal {
+                  display: none; /* Hidden by default */
+                  position: fixed; /* Stay in place */
+                  z-index: 1; /* Sit on top */
+                  padding-top: 100px; /* Location of the box */
+                  left: 0;
+                  top: 0;
+                  width: 100%; /* Full width */
+                  height: 100%; /* Full height */
+                  overflow: auto; /* Enable scroll if needed */
+                  background-color: rgb(70, 100, 120); /* Fallback color */
+                  background-color: rgba(
+                     0.4,
+                     0.3,
+                     0,
+                     0.4
+                  ); /* Black w/ opacity */
+               }
+
+               /* Modal Content */
+               .modal-content {
+                  background-color: #fefefe;
+                  margin: auto;
+                  padding: 20px;
+                  border: 1px solid #372c8c;
+                  width: 80%;
+               }
+
+               /* The Close Button */
+               .close {
+                  color: #aaaaaa;
+                  float: right;
+                  font-size: 28px;
+                  font-weight: bold;
+               }
+
+               .close:hover,
+               .close:focus {
+                  color: #000;
+                  text-decoration: none;
+                  cursor: pointer;
+               }
+            </style>
+         </div>
+
+         <!-- Tab content -->
+         <div id="London" class="tabcontent">
+            <div class="card">
+               <div class="card-body">
+                  Name : {{data.firstname}} {{data.middlename}}
+                  {{data.lastname}}
+
+                  <h6>Address:</h6>
+
+                  Permanent: {{data.permanent_address}} Temporary :
+                  {{data.temporary_address}}
+                  <h6>Date of birth : {{data.dateofbirth}}</h6>
+                  <h6>Join Date : {{data.joindate}}</h6>
+                  <h6>Experince : {{data.expyear}} years</h6>
+                  <h6>Phone Number:</h6>
+                  <h6>Primary phone number : {{data.pnumber}}</h6>
+                  <h6>Secondary phone number : {{data.snumber}}</h6>
+                  <h6>Citizenship Number : {{data.citizenship}}</h6>
+                  <h6>Father Name : {{data.fathername}}</h6>
+                  <h6>Grand Father Name : {{data.grandfathername}}</h6>
+                  <h6>Qualification : {{data.education}}</h6>
+               </div>
+            </div>
+         </div>
+
+         <div id="Paris" class="tabcontent">
+            <div class="card">
+               <div class="card-body">
+                <form method="POST" action="{% url 'companyprofile' data.id%}" enctype="multipart/form-data">
+                     {% csrf_token %}
+                  <div class="row">
+                     <div class="col">
+                        <label class="form-label" for="customFile"
+                           >Company Registration Certificate</label
+                        >
+                        <input
+                           type="file"
+                           class="form-control"
+                           id="cpreg"
+                           name="cpreg"
+                        />
+                     </div>
+                     <div class="col">
+                        <label class="form-label" for="customFile"
+                           >PAN or VAT Certificate</label
+                        >
+                        <input
+                           type="file"
+                           class="form-control"
+                           id="cppanimage"
+                        />
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col">
+                        <label class="form-label" for="customFile"
+                           >Agreement</label
+                        >
+                        <input
+                           type="file"
+                           class="form-control"
+                           id="cpagreement"
+                        />
+                     </div>
+                     <div class="col">
+                        <label class="form-label" for="customFile"
+                           >Others</label
+                        >
+                        <input
+                           type="file"
+                           class="form-control"
+                           id="cpother"
+                        />
+                     </div>
+                  </div>
+                  <div class="row">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                           <input
+                              class="btn btn-primary"
+                              type="submit"
+                              name="submit"
+                              value="Update"
+                              style="position: absolute; right: 0"
+                              href="#"
+                           />
+                        </div>
+                     </div>
+                     
+               </div>
+               </form>
+            </div>
+            </div>
+
+            <div id="Tokyo" class="tabcontent">
+            <div class="card">
+                <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
@@ -67,24 +329,99 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Developed by Nischal</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
                             </div>
-                        </div>
-                    </div>
-                </footer>
+                            </div>
             </div>
-        </div>
-        </section>
+         </div>
+      </main>
+   </div>
+   <style>
+      .tab {
+         overflow: hidden;
+         border: 1px solid #ccc;
+         background-color: #f1f1f1;
+      }
+
+      /* Style the buttons that are used to open the tab content */
+      .tab button {
+         background-color: inherit;
+         float: left;
+         border: none;
+         outline: none;
+         cursor: pointer;
+         padding: 14px 16px;
+         transition: 0.3s;
+      }
+
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+         background-color: #ddd;
+      }
+
+      /* Create an active/current tablink class */
+      .tab button.active {
+         background-color: #ccc;
+      }
+
+      /* Style the tab content */
+      .tabcontent {
+         display: none;
+         padding: 6px 12px;
+         border: 1px solid #ccc;
+         border-top: none;
+      }
+   </style>
+   <script>
+      //modal function
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal
+      btn.onclick = function () {
+         modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+         modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+         if (event.target == modal) {
+            modal.style.display = "none";
+         }
+      };
+
+      function openCity(evt, cityName) {
+         // Declare all variables
+         var i, tabcontent, tablinks;
+
+         // Get all elements with class="tabcontent" and hide them
+         tabcontent = document.getElementsByClassName("tabcontent");
+         for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+         }
+
+         // Get all elements with class="tablinks" and remove the class "active"
+         tablinks = document.getElementsByClassName("tablinks");
+         for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(
+               " active",
+               ""
+            );
+         }
+
+         // Show the current tab, and add an "active" class to the button that opened the tab
+         document.getElementById(cityName).style.display = "block";
+         evt.currentTarget.className += " active";
+      }
+   </script>
+</section>
 {%endblock%}
-
-

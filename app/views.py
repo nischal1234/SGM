@@ -1,5 +1,7 @@
 
 from django.contrib.messages.api import error
+from .forms import *
+from . import models
 from app.models import Employee,Company
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse, request
@@ -16,6 +18,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.translation import gettext as _
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 @csrf_exempt
@@ -224,10 +227,38 @@ def search(request):
 
 @login_required(login_url='login')
 def companyprofile(request,id):
-	companyid=id
+	if request.method=='POST':
+
+		findcompany=Company.objects.get(pk=id)
+		uploadedFile = request.FILES
+		findcompany.regfiles=uploadedFile
+		findcompany.save()
+					
+		uploadedFile = request.FILES
+		findcompany.panvat=uploadedFile
+		findcompany.save()
+	
+		uploadedFile = request.FILES
+		findcompany.other=uploadedFile
+		findcompany.save()
+	
+		uploadedFile = request.FILES
+		findcompany.agree=uploadedFile
+		findcompany.save()
+	
+		companyid=id
+	
 	data=Company.objects.get(pk=id)
 	#print(data)
 #	return render(request,'app/profile.html',{'profileid':profileid})
 	return render(request,'app/companyprofile.html',{'data':data})
 
-	
+
+@login_required(login_url='login')
+def company_update(request,id):
+	companyname=request.POST.get('cpname')
+	print(companyname)
+	print(id)
+	companydata=Company.objects.all()
+
+	return render(request,'app/view_company.html',{'company':companydata})

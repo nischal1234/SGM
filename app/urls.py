@@ -15,4 +15,5 @@ urlpatterns = [
     path('app/profile/<int:id>',views.profile,name='profile'),
     path('app/search',views.search,name='search'),
     path('app/companyprofile/<int:id>',views.companyprofile,name='companyprofile'),
+    path('app/companyprofile/update/<int:id>',views.company_update,name='company_update'),
 ]

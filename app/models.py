@@ -9,8 +9,11 @@ class Company(models.Model):
     website=models.URLField(max_length=20)
     telephone=models.CharField(max_length=15)
     cpannumber=models.CharField(max_length=15)
+    regfiles=models.FileField(upload_to='images/' ,null=True)
+    panvat=models.FileField(upload_to='images/',null=True)
+    other=models.FileField(upload_to='images/',null=True)
+    agree=models.FileField(upload_to='images/',null=True)
 
-    
     def __str__(self):
         return self.companyname
 
