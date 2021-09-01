@@ -211,11 +211,11 @@
          <div id="Paris" class="tabcontent">
             <div class="card">
                <div class="card-body">
-                <form method="POST" action="{% url 'companyprofile' data.id%}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'companyprofile' data.id %}" enctype="multipart/form-data">
                      {% csrf_token %}
                   <div class="row">
                      <div class="col">
-                        <label class="form-label" for="customFile"
+                        <label class="form-label" 
                            >Company Registration Certificate</label
                         >
                         <input
@@ -226,35 +226,38 @@
                         />
                      </div>
                      <div class="col">
-                        <label class="form-label" for="customFile"
+                        <label class="form-label" 
                            >PAN or VAT Certificate</label
                         >
                         <input
                            type="file"
                            class="form-control"
                            id="cppanimage"
+                           name="cppanimage"
                         />
                      </div>
                   </div>
                   <div class="row">
                      <div class="col">
-                        <label class="form-label" for="customFile"
+                        <label class="form-label" 
                            >Agreement</label
                         >
                         <input
                            type="file"
                            class="form-control"
                            id="cpagreement"
+                           name="cpagreement"
                         />
                      </div>
                      <div class="col">
-                        <label class="form-label" for="customFile"
+                        <label class="form-label" 
                            >Others</label
                         >
                         <input
                            type="file"
                            class="form-control"
                            id="cpother"
+                           name="cpother"
                         />
                      </div>
                   </div>

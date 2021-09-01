@@ -230,23 +230,28 @@ def companyprofile(request,id):
 	if request.method=='POST':
 
 		findcompany=Company.objects.get(pk=id)
-		uploadedFile = request.FILES
-		findcompany.regfiles=uploadedFile
+		uploadedreg = request.FILES['cpreg']
+		uploadedpan = request.FILES['cppanimage']
+		uploadedagree = request.FILES['cpagreement']
+		uploadedother = request.FILES['cpother']
+
+		#code for saving in database
+		findcompany.regfiles=uploadedreg
 		findcompany.save()
-					
-		uploadedFile = request.FILES
-		findcompany.panvat=uploadedFile
+		findcompany.panvat=uploadedpan
+		findcompany.save()			
+		findcompany.other=uploadedagree
+		findcompany.save()
+		findcompany.agree=uploadedother
 		findcompany.save()
 	
-		uploadedFile = request.FILES
-		findcompany.other=uploadedFile
-		findcompany.save()
+		
+		
 	
-		uploadedFile = request.FILES
-		findcompany.agree=uploadedFile
-		findcompany.save()
+		
+		
 	
-		companyid=id
+		
 	
 	data=Company.objects.get(pk=id)
 	#print(data)

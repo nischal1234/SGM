@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -16,4 +18,7 @@ urlpatterns = [
     path('app/search',views.search,name='search'),
     path('app/companyprofile/<int:id>',views.companyprofile,name='companyprofile'),
     path('app/companyprofile/update/<int:id>',views.company_update,name='company_update'),
-]
+   
+
+
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
