@@ -9,10 +9,10 @@ class Company(models.Model):
     website=models.URLField(max_length=20)
     telephone=models.CharField(max_length=15)
     cpannumber=models.CharField(max_length=15)
-    regfiles=models.FileField(upload_to='images/' ,null=True)
-    panvat=models.FileField(upload_to='images/',null=True)
-    other=models.FileField(upload_to='images/',null=True)
-    agree=models.FileField(upload_to='images/',null=True)
+    regfiles=models.FileField(upload_to='company_documents/' ,null=True)
+    panvat=models.FileField(upload_to='company_documents/',null=True)
+    other=models.FileField(upload_to='company_documents/',null=True)
+    agree=models.FileField(upload_to='company_documents/',null=True)
 
     def __str__(self):
         return self.companyname
@@ -43,6 +43,11 @@ class Employee(models.Model):
     gender=models.CharField(max_length=10)
     maritual=models.CharField(max_length=10)
     bloodgroup=models.CharField(max_length=5)
+    gphoto=models.FileField(upload_to='guard_documents/',null=True)
+    gagree=models.FileField(upload_to='guard_documents/',null=True)
+    gothers=models.FileField(upload_to='guard_documents/',null=True)
+    gpan=models.FileField(upload_to='guard_documents/',null=True)
+
     
     
 

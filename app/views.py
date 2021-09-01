@@ -153,10 +153,12 @@ def view_guards(request):
 @login_required(login_url='login')
 def profile(request,id):
 	profileid=id
+	companylist=Company.objects.all()
 	data=Employee.objects.get(pk=id)
 	#print(data)
+	
 #	return render(request,'app/profile.html',{'profileid':profileid})
-	return render(request,'app/profile.html',{'data':data})
+	return render(request,'app/profile.html',context={'data':data,'company':companylist})
 
 @login_required(login_url='login')
 def addcompany(request):
