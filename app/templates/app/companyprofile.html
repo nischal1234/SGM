@@ -5,7 +5,7 @@
          <div class="card" style="padding-left: 500px">
             <img
                class="card-img-top-right"
-               src="https://www.w3schools.com/images/w3schools_green.jpg"
+               src="https://www.freepnglogos.com/uploads/company-logo-png/company-logo-transparent-png-19.png"
                style="width: 128px; height: 128px; align: right"
                alt="Card image cap"
             />
@@ -185,27 +185,64 @@
 
          <!-- Tab content -->
          <div id="London" class="tabcontent">
-            <div class="card">
-               <div class="card-body">
-                  Name : {{data.firstname}} {{data.middlename}}
-                  {{data.lastname}}
-
-                  <h6>Address:</h6>
-
-                  Permanent: {{data.permanent_address}} Temporary :
-                  {{data.temporary_address}}
-                  <h6>Date of birth : {{data.dateofbirth}}</h6>
-                  <h6>Join Date : {{data.joindate}}</h6>
-                  <h6>Experince : {{data.expyear}} years</h6>
-                  <h6>Phone Number:</h6>
-                  <h6>Primary phone number : {{data.pnumber}}</h6>
-                  <h6>Secondary phone number : {{data.snumber}}</h6>
-                  <h6>Citizenship Number : {{data.citizenship}}</h6>
-                  <h6>Father Name : {{data.fathername}}</h6>
-                  <h6>Grand Father Name : {{data.grandfathername}}</h6>
-                  <h6>Qualification : {{data.education}}</h6>
-               </div>
-            </div>
+           
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Company Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.companyname}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.district}}
+                    </div>
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Branch Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.location}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.telephone}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Website</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.website}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">PAN or VAT Number</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.cpannumber}}
+                    </div>
+                  </div>
+                  <hr>
+                  
+                </div>
+             
+         </div>
          </div>
 
          <div id="Paris" class="tabcontent">

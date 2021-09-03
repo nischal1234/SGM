@@ -363,34 +363,165 @@
 
             <!-- Tab content -->
             <div id="London" class="tabcontent">
-               <div class="card">
-                     <div class="card-body">
-                         Name : {{data.firstname}} {{data.middlename}}
-                        {{data.lastname}}
-                      
-               
-               
+              
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.firstname}} {{data.middlename}} {{data.lastname}} 
+                    </div>
+                   
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Permanent Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.permanent_address}}
+                    </div>
+                     <div class="col-sm-3">
+                      <h6 class="mb-0">Temporary Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.temporary_address}}
+                    </div>
+                  </div>
+                  <hr>
+                   
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.pnumber}}, {{data.snumber}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Date of Birth</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.dateofbirth}}
+                    </div>
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Join Date</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.joindate}}
+                    </div>
+                  </div>
+                  <hr>
+                
+                    
                  
-                        
-                        <h6>Address:</h6>
-
-                        Permanent: {{data.permanent_address}}
-                        Temporary : {{data.temporary_address}}
-                        <h6>Date of birth : {{data.dateofbirth}}</h6>
-                        <h6>Join Date : {{data.joindate}}</h6>
-                        <h6>Experince : {{data.expyear}} years</h6>
-                        <h6>Phone Number:</h6>
-                        <h6>Primary phone number : {{data.pnumber}}</h6>
-                        <h6>Secondary phone number : {{data.snumber}}</h6>
-                        <h6>Citizenship Number : {{data.citizenship}}</h6>
-                        <h6>Father Name : {{data.fathername}}</h6>
-                        <h6>Grand Father Name : {{data.grandfathername}}</h6>
-                        <h6>Qualification : {{data.education}}</h6>
-                     </div>
-            </div>
-
-            </div>
-
+                  
+                   <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Citizenship Number</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.citizenship}}
+                    </div>
+                  </div>
+                  <hr>
+                   <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Father Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.fathername}}
+                    </div>
+                     <div class="col-sm-3">
+                      <h6 class="mb-0">Grandfather Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.grandfathername}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Education</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.education}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Assigned Post</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.assignpost}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">PAN Number</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.pannumber}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Height</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.height}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Skin color</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.skincolor}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Gender</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.gender}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Maritual Status</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.maritual}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Blood Group</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.bloodgroup}}
+                    </div>
+                  </div>
+                  <hr>
+                  
+                </div>
+                 </div>
+                  </div>
+             
+                  
             <div id="Paris" class="tabcontent">
             <div class="card">
                <div class="card-body">
@@ -461,10 +592,31 @@
                </form>
             </div>
             </div>
+            </div>
 
             <div id="Tokyo" class="tabcontent">
-               <h3>Tokyo</h3>
-               <p>Tokyo is the capital of Japan.</p>
+                <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                     <div class="col-sm-3">
+                      <h6 class="mb-0">Experince Year</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.expyear}}
+                    </div>
+                    <hr>
+                     <div class="col-sm-3">
+                      <h6 class="mb-0">Past Company Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{data.pastcname}}
+                    </div>
+                    <hr>
+                   
+                  
+                  </div>
+                  </div>
+                  </div>
             </div>
             <div id="posting" class="tabcontent">
             
