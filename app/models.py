@@ -3,7 +3,7 @@ from phone_field import PhoneField
 
 # Create your models here.
 class Company(models.Model):
-    companyname=models.CharField(max_length=30)
+    companyname=models.CharField(max_length=50)
     location=models.CharField(max_length=40)
     district=models.CharField(max_length=10)
     website=models.URLField(max_length=20)
@@ -48,15 +48,20 @@ class Employee(models.Model):
     gothers=models.FileField(upload_to='guard_documents/',null=True)
     gpan=models.FileField(upload_to='guard_documents/',null=True)
 
-    
-    
-
-
-
-
 #save function    
    
 
     def __str__(self):
         return self.firstname + " " + self.lastname
 #company details
+# 
+class employee_company_relation(models.Model):
+      employee_details=models.ForeignKey('Employee', null=True, on_delete=models.CASCADE)
+      company_details=models.ForeignKey('Company', null=True, on_delete=models.CASCADE)
+
+    
+
+
+
+
+

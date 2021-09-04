@@ -18,18 +18,18 @@
             </div>
          </div>
 
-         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'London')">
+         <div class="tab" style="background-color:#008040">
+            <button class="tablinks" style="color:white" onclick="openCity(event, 'London')">
                General Information
             </button>
-            <button class="tablinks" onclick="openCity(event, 'Paris')">
+            <button class="tablinks" style="color:white" onclick="openCity(event, 'Paris')">
                Documents
             </button>
-            <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+            <button class="tablinks" style="color:white" onclick="openCity(event, 'Tokyo')">
                Employee lists
             </button>
             <!-- Trigger/Open The Modal -->
-            <button id="myBtn">Edit</button>
+            <button id="myBtn" style="color:white">Edit</button>
 
             <!-- The Modal -->
             <div id="myModal" class="modal">
@@ -187,12 +187,13 @@
          <div id="London" class="tabcontent">
            
               <div class="card mb-3">
+               <div class="card text-white bg-success">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Company Full Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.companyname}}
                     </div>
                   </div>
@@ -201,13 +202,13 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Address</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9">
                       {{data.district}}
                     </div>
                     <div class="col-sm-3">
                       <h6 class="mb-0">Branch Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.location}}
                     </div>
                   </div>
@@ -216,7 +217,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Phone</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.telephone}}
                     </div>
                   </div>
@@ -225,7 +226,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Website</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.website}}
                     </div>
                   </div>
@@ -234,19 +235,21 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">PAN or VAT Number</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.cpannumber}}
                     </div>
                   </div>
                   <hr>
                   
                 </div>
-             
+            </div> 
          </div>
          </div>
 
          <div id="Paris" class="tabcontent">
+         
             <div class="card">
+            <div class="card text-white bg-success">
                <div class="card-body">
                 <form method="POST" action="{% url 'companyprofile' data.id %}" enctype="multipart/form-data">
                      {% csrf_token %}
@@ -315,11 +318,13 @@
                </form>
             </div>
             </div>
+            </div>
 
             <div id="Tokyo" class="tabcontent">
             <div class="card">
+            <div class="card text-white bg-success">
                 <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table id="datatablesSimple" style="color:white">
                                     <thead>
                                         <tr>
                                             <th>First Name</th>
@@ -372,6 +377,7 @@
                             </div>
                             </div>
             </div>
+             </div>
          </div>
       </main>
    </div>

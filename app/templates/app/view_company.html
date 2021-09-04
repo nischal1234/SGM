@@ -3,10 +3,10 @@
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">View Company</h1>
+                      
                         
-                        <div class="card mb-4">
-                            <div class="card-body">
+                        <div class="card mb-0"  >
+                            <div class="card-body" style="background-color:#008040;color:white;border-radius:15px 50px">
                                All saved company information are listed here!!
                             </div>
                         </div>
@@ -15,8 +15,9 @@
                                 <i class="fas fa-table me-1"></i>
                                 Data
                             </div>
+                             <div class="card text-white bg-success">
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table id="datatablesSimple" style="color:white">
                                     <thead>
                                         <tr>
                                             <th>Company Name</th>
@@ -63,6 +64,7 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
+                            </div>
                             </div>
                         </div>
                     </div>

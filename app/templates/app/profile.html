@@ -8,26 +8,26 @@
                   <div class="card-body">
                      <h5 class="card-title">{{data.firstname}}</h5>
                     
-                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago #008040</small></p>
                   </div>
                </div>
-         
+          
 
-            <div class="tab">
-               <button class="tablinks" onclick="openCity(event, 'London')">
+            <div class="tab" style="background-color:#008040">
+               <button class="tablinks" style="color:white" onclick="openCity(event, 'London')">
                   General Information
                </button>
-               <button class="tablinks" onclick="openCity(event, 'Paris')">
+               <button class="tablinks" style="color:white" onclick="openCity(event, 'Paris')">
                   Documents
                </button>
-               <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+               <button class="tablinks" style="color:white" onclick="openCity(event, 'Tokyo')">
                   Experinces
                </button>
-               <button class="tablinks" onclick="openCity(event, 'posting')">
+               <button class="tablinks" style="color:white" onclick="openCity(event, 'posting')">
                   Guard Posting
                </button>
                               <!-- Trigger/Open The Modal -->
-               <button id="myBtn">Edit</button>
+               <button id="myBtn" style="color:white" >Edit</button>
 
                <!-- The Modal -->
                <div id="myModal" class="modal">
@@ -365,12 +365,13 @@
             <div id="London" class="tabcontent">
               
               <div class="card mb-3">
+               <div class="card text-white bg-success">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Full Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.firstname}} {{data.middlename}} {{data.lastname}} 
                     </div>
                    
@@ -380,13 +381,13 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Permanent Address</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.permanent_address}}
                     </div>
                      <div class="col-sm-3">
                       <h6 class="mb-0">Temporary Address</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.temporary_address}}
                     </div>
                   </div>
@@ -396,7 +397,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Phone</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.pnumber}}, {{data.snumber}}
                     </div>
                   </div>
@@ -405,13 +406,13 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Date of Birth</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.dateofbirth}}
                     </div>
                     <div class="col-sm-3">
                       <h6 class="mb-0">Join Date</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.joindate}}
                     </div>
                   </div>
@@ -424,7 +425,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Citizenship Number</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.citizenship}}
                     </div>
                   </div>
@@ -433,13 +434,13 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Father Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.fathername}}
                     </div>
                      <div class="col-sm-3">
                       <h6 class="mb-0">Grandfather Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.grandfathername}}
                     </div>
                   </div>
@@ -448,7 +449,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Education</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.education}}
                     </div>
                   </div>
@@ -457,7 +458,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Assigned Post</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.assignpost}}
                     </div>
                   </div>
@@ -466,7 +467,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">PAN Number</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.pannumber}}
                     </div>
                   </div>
@@ -475,7 +476,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Height</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.height}}
                     </div>
                   </div>
@@ -484,7 +485,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Skin color</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.skincolor}}
                     </div>
                   </div>
@@ -493,7 +494,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Gender</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.gender}}
                     </div>
                   </div>
@@ -502,7 +503,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Maritual Status</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9">
                       {{data.maritual}}
                     </div>
                   </div>
@@ -511,7 +512,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Blood Group</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.bloodgroup}}
                     </div>
                   </div>
@@ -520,10 +521,11 @@
                 </div>
                  </div>
                   </div>
-             
+             </div>
                   
             <div id="Paris" class="tabcontent">
             <div class="card">
+             <div class="card text-white bg-success">
                <div class="card-body">
                 <form method="POST" action="{% url 'profile' data.id %}" enctype="multipart/form-data">
                      {% csrf_token %}
@@ -596,24 +598,25 @@
 
             <div id="Tokyo" class="tabcontent">
                 <div class="card mb-3">
+               <div class="card text-white bg-success">
                 <div class="card-body">
                   <div class="row">
                      <div class="col-sm-3">
                       <h6 class="mb-0">Experince Year</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.expyear}}
                     </div>
                     <hr>
                      <div class="col-sm-3">
                       <h6 class="mb-0">Past Company Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{data.pastcname}}
                     </div>
                     <hr>
                    
-                  
+                  </div>
                   </div>
                   </div>
                   </div>
@@ -621,12 +624,13 @@
             <div id="posting" class="tabcontent">
             
                <div class="card">
+               <div class="card text-white bg-success">
                   <div class="card=body">
-                  <form method="POST" action="#" >
+                  <form method="POST" action="{% url 'choosecompany' data.id %}" >
                      {% csrf_token %}
                    <div class="col">
                      <label for="text" class="mr-sm-2">Choose a company:</label>
-                     <select name="bgroup"  class="form-control" id="choosecompany">
+                     <select name="companynamedata"  class="form-control" id="companynamedata">
                         {% for company in company %}
                         <option>{{company.companyname}}</option>
                         {% endfor %}
@@ -650,7 +654,7 @@
                       </form>
                   </div>
                </div>
-              
+              </div>
             </div>
          </div>
          

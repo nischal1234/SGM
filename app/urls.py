@@ -18,7 +18,7 @@ urlpatterns = [
     path('app/search',views.search,name='search'),
     path('app/companyprofile/<int:id>',views.companyprofile,name='companyprofile'),
     path('app/companyprofile/update/<int:id>',views.company_update,name='company_update'),
-   
+    path('app/profile/choosecompany/<int:id>',views.choosecompany,name='choosecompany'),
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

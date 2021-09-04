@@ -1,130 +1,140 @@
 {% extends 'app/sidebar.html' %} {% block body %}
- 
+
 <section class="home-section">
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4">
+            <h5 class="mt-0">Search</h5>
 
-      <div id="layoutSidenav_content">
-         <main>
-            <div class="container-fluid px-4">
-               <h1 class="mt-4" style="background-color="red"">Search</h1>
-
-               <div class="card mb-4">
+            <div class="card mb-4">
+               <div class="card text-white bg-success">
                   <div class="card-body">
                      <form action="{% url 'search' %}" method="POST">
-                     {% csrf_token %} 
-                           <div class="input-group">
-                                       <div class="input-select">
-                                             <select id="searchopt" name="searchopt" class="form-select" aria-label="Default select example">
-                                                <option selected>Select Option</option>
-                                                <option>Guard</option>
-                                                <option>Company</option>
-                                                <option>Age Below 50</option>
-                                                <option>Age Above 50</option>
-                                             </select>
-                                       </div>
-                                          
-                                           <input  type="search" id="searchdata" name="searchdata" class="form-control" />
-                                          
-                                          
-                                       
-                                          <button  class="btn btn-primary"  type="submit"
-                        name="submit"
-                        value="Save">
-                                             <i class="bx bx-search"></i>
-                                          </button> 
-                                    
-                           </div>    
-                        </form>        
-                           
-                  </div>
-                  </div>         
-                           
-               
-               <div class="card mb-4">
-                  <div class="card-header">
-                  
-                      <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Citizenship Number</th>
-                                            <th>permanent address</th>
-                                            <th>Temporary Address</th>
-                                            <th>Date of Birth</th>
-                                            <th>Age</th>
-                                            <th>Join Date</th>
-                                            <th>phone number</th>
-                                            <th>Experince Year</th>
-                                            <th>PAN number</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Citizenship Number</th>
-                                            <th>permanent address</th>
-                                            <th>Temporary Address</th>
-                                            <th>Date of Birth</th>
-                                            <th>Age</th>
-                                            <th>Join Date</th>
-                                            <th>phone number</th>
-                                            <th>Experince Year</th>
-                                            <th>PAN number</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                      {% for empl in datas %}
-                                        
-                                       <tr>
-                                            <td>{{empl.firstname}} {{empl.middlename}} {{empl.lastname}} {{empl.companyname}}</td>
-                                            <td>{{empl.citizenship}}</td>
-                                            <td>{{empl.permanent_address}}{{empl.district}}</td>
-                                            <td>{{empl.temporary_address}}{{empl.location}}</td>
-                                            <td>{{empl.dateofbirth}}</td>
-                                            <td>{{empl.age}}</td>
-                                            <td>{{empl.joindate}}</td>
-                                            <td>{{empl.pnumber}} {{empl.telephone}}</td>
-                                            <td>{{empl.expyear}}</td>
-                                            <td>{{empl.cpannumber}}</td>
-                                            
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                  </div>
-                  
-                  
-               </div>
-          </div>  
-         </main>
-         <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-               <div class="d-flex align-items-center justify-content-between small">
-                  <div class="text-muted">Copyright &copy; Developed by Nischal</div>
-                  <div>
-                     <a href="#">Privacy Policy</a>
-                     &middot;
-                     <a href="#">Terms &amp; Conditions</a>
+                        {% csrf_token %}
+                        <div class="input-group">
+                           <div class="input-select">
+                              <select
+                                 id="searchopt"
+                                 name="searchopt"
+                                 class="form-select"
+                                 aria-label="Default select example"
+                              >
+                                 <option selected>Select Option</option>
+                                 <option>Guard</option>
+                                 <option>Company</option>
+                                 <option>Age Below 50</option>
+                                 <option>Age Above 50</option>
+                              </select>
+                           </div>
+
+                           <input
+                              type="search"
+                              id="searchdata"
+                              name="searchdata"
+                              class="form-control"
+                           />
+
+                           <button
+                              class="btn btn-primary"
+                              type="submit"
+                              name="submit"
+                              value="Save"
+                           >
+                              <i class="bx bx-search"></i>
+                           </button>
+                        </div>
+                     </form>
                   </div>
                </div>
             </div>
-         </footer>
-      </div>
 
+            <div class="card mb-4">
+               <div class="card text-white bg-success">
+                  <div class="card-header">
+                     <table id="datatablesSimple" style="color: white">
+                        <thead>
+                           <tr>
+                              <th>Name</th>
+                              <th>Citizenship Number</th>
+                              <th>permanent address</th>
+                              <th>Temporary Address</th>
+                              <th>Date of Birth</th>
+                              <th>Age</th>
+                              <th>Join Date</th>
+                              <th>phone number</th>
+                              <th>Experince Year</th>
+                              <th>PAN number</th>
+                           </tr>
+                        </thead>
+                        <tfoot>
+                           <tr>
+                              <th>Name</th>
+                              <th>Citizenship Number</th>
+                              <th>permanent address</th>
+                              <th>Temporary Address</th>
+                              <th>Date of Birth</th>
+                              <th>Age</th>
+                              <th>Join Date</th>
+                              <th>phone number</th>
+                              <th>Experince Year</th>
+                              <th>PAN number</th>
+                           </tr>
+                        </tfoot>
+                        <tbody>
+                           {% for empl in datas %}
 
+                           <tr>
+                              <td>
+                                 {{empl.firstname}} {{empl.middlename}}
+                                 {{empl.lastname}} {{empl.companyname}}
+                              </td>
+                              <td>{{empl.citizenship}}</td>
+                              <td>
+                                 {{empl.permanent_address}}{{empl.district}}
+                              </td>
+                              <td>
+                                 {{empl.temporary_address}}{{empl.location}}
+                              </td>
+                              <td>{{empl.dateofbirth}}</td>
+                              <td>{{empl.age}}</td>
+                              <td>{{empl.joindate}}</td>
+                              <td>{{empl.pnumber}} {{empl.telephone}}</td>
+                              <td>{{empl.expyear}}</td>
+                              <td>{{empl.cpannumber}}</td>
+                           </tr>
+                           {% endfor %}
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="py-4 bg-light mt-auto">
+         <div class="container-fluid px-4">
+            <div
+               class="d-flex align-items-center justify-content-between small"
+            >
+               <div class="text-muted">
+                  Copyright &copy; Developed by Nischal
+               </div>
+               <div>
+                  <a href="#">Privacy Policy</a>
+                  &middot;
+                  <a href="#">Terms &amp; Conditions</a>
+               </div>
+            </div>
+         </div>
+      </footer>
+   </div>
 </section>
 {% load static %}
 
-    <script>
-      const choices = new Choices('[data-trigger]',
-      {
-        searchEnabled: false,
-        itemSelectText: '',
-      });
+<script>
+   const choices = new Choices("[data-trigger]", {
+      searchEnabled: false,
+      itemSelectText: "",
+   });
+</script>
 
-    </script>
-
- {%endblock%}
-
-
-
+{%endblock%}

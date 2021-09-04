@@ -2,7 +2,7 @@
 from django.contrib.messages.api import error
 from .forms import *
 from . import models
-from app.models import Employee,Company
+from app.models import Employee,Company,employee_company_relation
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse, request
 from django.forms import inlineformset_factory
@@ -176,7 +176,7 @@ def addcompany(request):
 			location=address,
 			district=branchname,
 			website=cpwebsite,
-			pannumber=cppannumber,
+			cpannumber=cppannumber,
 			telephone=cpphnnumber
 			
 			)
@@ -269,3 +269,25 @@ def company_update(request,id):
 	companydata=Company.objects.all()
 
 	return render(request,'app/view_company.html',{'company':companydata})
+
+@login_required(login_url='login')
+def choosecompany(request,id):
+	#print(id)
+	cname=request.POST.get('companynamedata')
+	print(cname)
+	idcompany = Company.objects.get(companyname=cname).id
+	print(idcompany)
+	companydetails=Company.objects.get(pk=idcompany)
+	#print(companydetails)
+	employeedetails=Employee.objects.get(pk=id)
+	relation=employee_company_relation()
+
+	employee_company_relation.objects.create(employee_details=employeedetails,company_details=companydetails)
+	relation.save()
+	
+	companylist=Company.objects.all()
+	data=Employee.objects.get(pk=id)
+	#print(data)
+	
+#	return render(request,'app/profile.html',{'profileid':profileid})
+	return render(request,'app/profile.html',context={'data':data,'company':companylist})
