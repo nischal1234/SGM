@@ -4,13 +4,21 @@
       <main>
          
              <div class="card" style= "padding-left:500px">
-                  <img class="card-img-top-right" src="https://www.w3schools.com/images/w3schools_green.jpg"  style="width: 128px; height: 128px; align: right" alt="Card image cap">
-                  <div class="card-body">
-                     <h5 class="card-title">{{data.firstname}}</h5>
+                        {% load static %}
+                        <img class="img-thumbnail" src="{% static 'app/images/guard1.png' %}"
+                              alt="Responsive image" width="350" height="100" />
+                  <div class="card-body" style="justify-content: center">
+                     <h5 class="card-title">{{data.firstname}} {{data.id}}</h5>
                     
                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago #008040</small></p>
                   </div>
+                  
                </div>
+                {% if message %}
+                            <div class="alert alert-success" role="alert">
+                                {{message}}
+                                </div>
+                        {% endif %}
           
 
             <div class="tab" style="background-color:#008040">
@@ -33,11 +41,11 @@
                <div id="myModal" class="modal">
 
                   <!-- Modal content -->
-                  <div class="modal-content">
+                  <div class="modal-content" style="background-color:#008040;color:white">
                    Edit
-                     <span class="close">&times;</span>
                     
-                      <form method="POST" action="{% url 'guard_add' %}">
+                    
+                      <form method="POST" action="{% url 'guard_update' data.id %}">
                {% csrf_token %}
                <div class="row">
                   <div class="col">
@@ -312,6 +320,7 @@
                         href="#"
                      />
                   </div>
+                     <span class="close">&times;</span>
                </div>
             </form>
 

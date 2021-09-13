@@ -19,6 +19,6 @@ urlpatterns = [
     path('app/companyprofile/<int:id>',views.companyprofile,name='companyprofile'),
     path('app/companyprofile/update/<int:id>',views.company_update,name='company_update'),
     path('app/profile/choosecompany/<int:id>',views.choosecompany,name='choosecompany'),
-
+    path('app/profile/update/<int:id>',views.guard_update,name='guard_update'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

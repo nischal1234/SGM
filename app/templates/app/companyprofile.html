@@ -3,12 +3,9 @@
    <div id="layoutSidenav_content">
       <main>
          <div class="card" style="padding-left: 500px">
-            <img
-               class="card-img-top-right"
-               src="https://www.freepnglogos.com/uploads/company-logo-png/company-logo-transparent-png-19.png"
-               style="width: 128px; height: 128px; align: right"
-               alt="Card image cap"
-            />
+            {% load static %}
+                        <img class="img-thumbnail" src="{% static 'app/images/logo.png' %}"
+                              alt="Responsive image" width="350" height="150" />
             <div class="card-body">
                <h5 class="card-title">{{data.firstname}}</h5>
 
@@ -16,8 +13,16 @@
                   <small class="text-muted">Last updated 3 mins ago</small>
                </p>
             </div>
+            
+           
          </div>
-
+    {% if messages_does %}
+            <div class="alert alert-success" role="alert">{{messages_does}}</div>
+            {% endif %} {% if messages_doesnt %}
+            <div class="alert alert-danger" role="alert">
+               {{messages_doesnt}}
+            </div>
+            {% endif %}
          <div class="tab" style="background-color:#008040">
             <button class="tablinks" style="color:white" onclick="openCity(event, 'London')">
                General Information
@@ -34,10 +39,10 @@
             <!-- The Modal -->
             <div id="myModal" class="modal">
                <!-- Modal content -->
-               <div class="modal-content">
+               <div class="modal-content" style="background-color:#008040;color:white">
                   Edit
-                  <span class="close">&times;</span>
-
+                 
+                  <hr>
                   <form method="POST" action="{% url 'company_update' data.id%}">
                      {% csrf_token %}
                      <div class="row">
@@ -120,7 +125,7 @@
                            />
                         </div>
                      </div>
-
+               
                      <div class="row">
                         <div class="d-grid gap-2 col-6 mx-auto">
                            <input
@@ -132,7 +137,9 @@
                               href="#"
                            />
                         </div>
+                         <span class="close">&times;</span>
                      </div>
+                     
                   </form>
                </div>
             </div>

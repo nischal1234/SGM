@@ -9,7 +9,7 @@ from django.forms import inlineformset_factory
 from django.contrib.auth.hashers import  check_password
 #from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-
+from app.search import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password
 
@@ -36,10 +36,12 @@ def home(request):
 			print(user)
 			if user is not None:
 					login(request,user)
+					
 					return render(request,'app/dashboard.html')
    				 # A backend authenticated the credentials
 			else:
-					return render(request,'app/login.html')
+				message='Username or Password is wrong!!'
+				return render(request,'app/login.html',{'message':message})
 				
 		
 			
@@ -92,37 +94,46 @@ def guard_add(request):
 		gender=request.POST.get('gender')
 		maritual=request.POST.get('mstatus')
 		blood=request.POST.get('bgroup')
-		ins=Employee()
-		Employee.objects.create(
-			firstname=fname,
-			middlename=mname,
-			lastname=lname,
-			permanent_address=paddress,
-			temporary_address=taddress,
-			dateofbirth=dob,
-			joindate=joindate,
-			expyear=exyear,
-			pnumber=pnumber,
-			snumber=snumber,
-			citizenship=citizenship,
-			fathername=fathername,
-			grandfathername=grandfather,
-			education=education,
-			assignpost=assign,
-			pastcname=pastcompany,
-			pannumber=pan,
-			height=height,
-			skincolor=skin,
-			gender=gender,
-			maritual=maritual,
-			bloodgroup=blood	
-			)
+		if Employee.objects.filter(firstname=fname,middlename=mname,lastname=lname,fathername=fathername).exists() or Employee.objects.filter(citizenship=citizenship).exists():
+			messages="Security guard is already registered !!"
+			return render(request,'app/guard_add.html',{'message_does': messages})
 		
-		ins.save()
+		
+		else:
+			ins=Employee()
+			p=Employee(
+				firstname=fname,
+				middlename=mname,
+				lastname=lname,
+				permanent_address=paddress,
+				temporary_address=taddress,
+				dateofbirth=dob,
+				joindate=joindate,
+				expyear=exyear,
+				pnumber=pnumber,
+				snumber=snumber,
+				citizenship=citizenship,
+				fathername=fathername,
+				grandfathername=grandfather,
+				education=education,
+				assignpost=assign,
+				pastcname=pastcompany,
+				pannumber=pan,
+				height=height,
+				skincolor=skin,
+				gender=gender,
+				maritual=maritual,
+				bloodgroup=blood	
+				)
 
-		return render(
-            'app/guard_add.html',
-            {'message': 'Update Success', })
+			p.save()
+			
+			
+			messages="Guard details has been saved successfully !!"
+			
+			return render(request,
+				'app/guard_add.html',
+				{'message_doesnt': messages })
 
 
 
@@ -170,26 +181,30 @@ def addcompany(request):
 		cpwebsite=request.POST.get('cpwebsite')
 		cpphnnumber=request.POST.get('cpphnnumber')
 		
-		ins=Company()
-		Company.objects.create(
-			companyname=companyname,
-			location=address,
-			district=branchname,
-			website=cpwebsite,
-			cpannumber=cppannumber,
-			telephone=cpphnnumber
-			
-			)
+		if Company.objects.filter(companyname=companyname).exists() or Company.objects.filter(cpannumber=cppannumber).exists() :
+			print("exist")
+			message="already exist this company! Please check your input data"
+			return render(request,'app/add_company.html',{'messages_does':message})
 		
-		ins.save()
 
-		return render(
-            'app/add_company.html',
-            {'message': 'Update Success', })
-
+		else:
+			ins=Company()
+			Company.objects.create(companyname=companyname,
+			location=branchname,
+			district=address,
+			website=cpwebsite,
+			telephone=cpphnnumber,
+			cpannumber=cppannumber	
+			
+			)	
+			print("not exists")
+			message="Company registered successfully! "
+			return render(request,'app/add_company.html',{'messages_doesnt':message})
+			
 
 
 	else:
+		print("executed")
 		return render(request,'app/add_company.html')
 
 @login_required(login_url='login')
@@ -264,6 +279,38 @@ def companyprofile(request,id):
 @login_required(login_url='login')
 def company_update(request,id):
 	companyname=request.POST.get('cpname')
+	address=request.POST.get('cpaddress')
+	branchname=request.POST.get('branchname')
+	cppannumber=request.POST.get('cppannumber')
+	cpwebsite=request.POST.get('cpwebsite')
+	cpphnnumber=request.POST.get('cpphnnumber')
+	if Company.objects.filter(companyname=companyname).exclude(pk=id).exists() or Company.objects.filter(cpannumber=cppannumber).exclude(pk=id).exists() :
+			print("exist")
+			message="already exist this company! Please check your input data"
+			data=Company.objects.get(pk=id)
+			return render(request,'app/companyprofile.html',{'messages_doesnt':message, 'data':data})
+			
+		
+
+	else:
+			ins=Company.objects.get(pk=id)
+			ins.companyname=companyname
+			ins.save()
+			ins.location=branchname
+			ins.save()
+			ins.district=address
+			ins.save()
+			ins.website=cpwebsite
+			ins.save()
+			ins.telephone=cpphnnumber
+			ins.save()
+			ins.cpannumber=cppannumber	
+			ins.save()
+			
+			print("not exists")
+			message="Company Modified successfully! "
+			data=Company.objects.get(pk=id)
+			return render(request,'app/companyprofile.html',{'messages_doesnt':message, 'data':data})
 	print(companyname)
 	print(id)
 	companydata=Company.objects.all()
@@ -291,3 +338,96 @@ def choosecompany(request,id):
 	
 #	return render(request,'app/profile.html',{'profileid':profileid})
 	return render(request,'app/profile.html',context={'data':data,'company':companylist})
+
+@login_required(login_url='login')
+def guard_update(request,id):
+	if request.method=='POST':
+		fname=request.POST.get('fname')
+		mname=request.POST.get('sname')
+		lname=request.POST.get('lname')
+		paddress=request.POST.get('paddress')
+		taddress=request.POST.get('taddress')
+		dob=request.POST.get('dob')
+		joindate=request.POST.get('joindate')
+		exyear=request.POST.get('exyear')
+		pnumber=request.POST.get('pnumber')
+		snumber=request.POST.get('snumber')
+		citizenship=request.POST.get('citinum')
+		fathername=request.POST.get('fathername')
+		grandfather=request.POST.get('gname')
+		education=request.POST.get('eduquali')
+		assign=request.POST.get('apost')
+		pastcompany=request.POST.get('pastcname')
+		pan=request.POST.get('pannumber')
+		height=request.POST.get('hguard')
+		skin=request.POST.get('skincolor')
+		gender=request.POST.get('gender')
+		maritual=request.POST.get('mstatus')
+		blood=request.POST.get('bgroup')
+		if Employee.objects.filter(firstname=fname,middlename=mname,lastname=lname,fathername=fathername).exclude(pk=id).exists() and Employee.objects.filter(citizenship=citizenship).exclude(pk=id).exists():
+			messages="Security guard is already registered !!"
+			data=Employee.objects.get(pk=id)
+			return render(request,'app/guard_add.html',{'message_does': messages, 'data':data})
+		
+		
+		else:
+			ins=Employee.objects.get(pk=id)
+			
+			ins.firstname=fname
+			ins.save()
+			ins.middlename=mname
+			ins.save()
+			ins.lastname=lname
+			ins.save()
+			ins.permanent_address=paddress
+			ins.save()
+			ins.temporary_address=taddress
+			ins.save()
+			ins.dateofbirth=dob
+			ins.save()
+			ins.joindate=joindate
+			ins.save()
+			ins.expyear=exyear
+			ins.save()
+			ins.pnumber=pnumber
+			ins.save()
+			ins.snumber=snumber
+			ins.save()
+			ins.citizenship=citizenship
+			ins.save()
+			ins.fathername=fathername
+			ins.save()
+			ins.grandfathername=grandfather
+			ins.save()
+			ins.education=education
+			ins.save()
+			ins.assignpost=assign
+			ins.save()
+			ins.pastcname=pastcompany
+			ins.save()
+			ins.pannumber=pan
+			ins.save()
+			ins.height=height
+			ins.save()
+			ins.skincolor=skin
+			ins.save()
+			ins.gender=gender
+			ins.save()
+			ins.maritual=maritual
+			ins.save()
+			ins.bloodgroup=blood
+			ins.save()
+					
+			
+			messages="Guard details has been updated successfully !!"
+			data=Employee.objects.get(pk=id)
+			return render(request,
+				'app/guard_add.html',
+				{'message_doesnt': messages , 'data':data})
+
+
+
+	else:
+		return render(request,'app/guard_add.html')
+
+	return render(request,'app/profile.html',{'company':companydata})

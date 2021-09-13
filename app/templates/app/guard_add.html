@@ -1,7 +1,7 @@
 {% extends 'app/sidebar.html' %} {% block body %}
 <section class="home-section">
 <div id="layoutSidenav_content">
-   <main>
+   
       <div class="container-fluid px-4">
          
         
@@ -12,7 +12,7 @@
             </div>
          </div>
         
-         <div class="card mb-4" >
+         <div class="card mb-4" style="background-color:#008040;color:white" >
          
             <div class="card-header">
                <i class="fas fa-table me-1"></i>
@@ -20,7 +20,8 @@
             </div>
             <form method="POST" action="{% url 'guard_add' %}">
                {% csrf_token %}
-               <div class="row">
+              <div class="card-header">
+               <div class="row" >
                   <div class="col">
                      <label for="text" class="mr-sm-2">First Name:</label>
                      <input
@@ -52,6 +53,8 @@
                      />
                   </div>
                </div>
+                </div>
+            <div class="card-header">
                <div class="row">
                   <div class="col">
                      <label for="text" class="mr-sm-2">Fathers Name:</label>
@@ -75,7 +78,8 @@
                      />
                   </div>
                </div>
-
+            </div>
+            <div class="card-header">
                <div class="row">
                   <div class="col">
                      <label for="text" class="mr-sm-2"
@@ -117,6 +121,8 @@
                      </select>
                   </div>
                </div>
+               </div>
+            <div class="card-header">
                <div class="row">
                   <div class="col">
                      <label for="text" class="mr-sm-2">Date of Birth:</label>
@@ -162,6 +168,8 @@
                      </select>
                   </div>
                </div>
+            </div>
+            <div class="card-header">
                <div class="row">
                   <div class="col">
                      <label for="text" class="mr-sm-2"
@@ -193,7 +201,7 @@
                      <input
                         type="text"
                         class="form-control"
-                        placeholder="Enter Citizenship Number"
+                        placeholder="E.g 1234/567"
                         name="citinum"
                         required
                      />
@@ -221,7 +229,8 @@
                      />
                   </div>
                </div>
-
+               </div>
+               <div class="card-header">
                <div class="row">
                   <div class="col">
                      <label for="text" class="mr-sm-2">Height of Guard:</label>
@@ -281,7 +290,8 @@
                   </div>
                   
                </div>
-
+               </div>
+               <div class="card-header">
                <div class="row">
                   <div class="d-grid gap-2 col-6 mx-auto">
                      <input
@@ -294,12 +304,26 @@
                      />
                   </div>
                </div>
+               </div>
             </form>
          </div>
+        {% if message_does %}
+          <div class="alert alert-danger" role="alert">
+               {{message_does}}
+            </div>
+             {% endif %}
+             {% if message_doesnt %}
+            <div class="alert alert-success" role="alert">
+               {{message_doesnt}}
+            </div>
+            {% endif %}
          </div>
+          
+           
+           
       </div>
      
-   </main>
+  
    <footer class="py-4 bg-light mt-auto">
       <div class="container-fluid px-4">
          <div class="d-flex align-items-center justify-content-between small">
