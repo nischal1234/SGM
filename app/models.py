@@ -59,9 +59,11 @@ class employee_company_relation(models.Model):
       employee_details=models.ForeignKey('Employee', null=True, on_delete=models.CASCADE)
       company_details=models.ForeignKey('Company', null=True, on_delete=models.CASCADE)
 
+class employee_posting_history(models.Model):
+    employee_id=models.ForeignKey('Employee', null=True, on_delete=models.CASCADE)
+    company_details=models.ForeignKey('Company', null=True, on_delete=models.CASCADE)
+    post_date=models.DateField(auto_now_add=True)
     
 
-
-
-
+    
 

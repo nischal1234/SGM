@@ -268,12 +268,27 @@ def companyprofile(request,id):
 		
 		
 	
-		
+	#employee_list_by_company=employee_company_relation()
+	idvalue=employee_company_relation.objects.filter(company_details=id).values('employee_details')
+	#newvalue=employee_company_relation.objects.filter(pk=)
+	print(idvalue)
+	employee_data=[]
+	for ele in idvalue:
+		for key, value in ele.items():
+		#	print(value)
+			employee_data.append(Employee.objects.get(pk=value))
+			#print(employee)
+	print(employee_data)
+	#now find out all employee id using for loop in idvalue dict. then extract all data associated in that id.
+
+	
+	#employee=employee_company_relation.objects.get(pk=idvalue)
 	
 	data=Company.objects.get(pk=id)
+	print(data)
 	#print(data)
 #	return render(request,'app/profile.html',{'profileid':profileid})
-	return render(request,'app/companyprofile.html',{'data':data})
+	return render(request,'app/companyprofile.html',{'data':data,'employee_list':employee_data})
 
 
 @login_required(login_url='login')
@@ -319,23 +334,42 @@ def company_update(request,id):
 
 @login_required(login_url='login')
 def choosecompany(request,id):
-	#print(id)
-	cname=request.POST.get('companynamedata')
-	print(cname)
-	idcompany = Company.objects.get(companyname=cname).id
-	print(idcompany)
-	companydetails=Company.objects.get(pk=idcompany)
-	#print(companydetails)
-	employeedetails=Employee.objects.get(pk=id)
-	relation=employee_company_relation()
+	if request.method=='POST':
+		#print(id)
+		#.....................company id extraction.......................
+		cname=request.POST.get('companynamedata')
+		print(cname)
+		idcompany = Company.objects.get(companyname=cname).id
+		print(idcompany)
+		companydetails=Company.objects.get(companyname=cname)
+		#.................................................................
+		#print(companydetails)
 
-	employee_company_relation.objects.create(employee_details=employeedetails,company_details=companydetails)
-	relation.save()
-	
+		#................Employee id extraction...........................
+		employeedetails=Employee.objects.get(pk=id)
+		relation=employee_company_relation()
+		employee_posting_history.objects.create(employee_id=employeedetails,company_details=companydetails)
+		#...................................................................
+		if employee_company_relation.objects.filter(employee_details=employeedetails).exists():
+			idnumber=employee_company_relation.objects.get(employee_details=employeedetails)
+			idnumber.company_details=companydetails
+			idnumber.save()
+			companylist=Company.objects.all()
+			data=Employee.objects.get(pk=id)
+			return render(request,'app/profile.html',context={'data':data,'company':companylist})
+		else:
+			relation=employee_company_relation()
+			employee_company_relation.objects.create(employee_details=employeedetails,company_details=companydetails)
+			
+			companylist=Company.objects.all()
+			data=Employee.objects.get(pk=id)
+			return render(request,'app/profile.html',context={'data':data,'company':companylist})
+
+				
 	companylist=Company.objects.all()
 	data=Employee.objects.get(pk=id)
-	#print(data)
-	
+		#print(data)
+		
 #	return render(request,'app/profile.html',{'profileid':profileid})
 	return render(request,'app/profile.html',context={'data':data,'company':companylist})
 
