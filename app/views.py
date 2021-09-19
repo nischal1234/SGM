@@ -2,9 +2,10 @@
 from django.contrib.messages.api import error
 from .forms import *
 from . import models
+from datetime import date
 from app.models import Employee,Company,employee_company_relation
 from django.shortcuts import render, redirect 
-from django.http import HttpResponse, request
+from django.http import HttpResponse, request, response
 from django.forms import inlineformset_factory
 from django.contrib.auth.hashers import  check_password
 #from django.contrib.auth.forms import UserCreationForm
@@ -12,9 +13,9 @@ from django.contrib import messages
 from app.search import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password
-
+from django.contrib.auth import logout
 from django.contrib import messages
-
+import csv
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.translation import gettext as _
@@ -25,7 +26,17 @@ from django.core.files.storage import FileSystemStorage
 def home(request):
 	if request.user.is_authenticated:
 		
-		return redirect('dashboard/')
+		count = Employee.objects.count()
+		totalcompany=Company.objects.count()
+		employee=Employee.objects.all()
+		totalposting=employee_company_relation.objects.count()
+		
+		
+		
+		
+		return render(request,'app/dashboard.html',{
+        'count' : count,'totalcompany':totalcompany,'totalposting':totalposting,'employee':employee
+    })
 	else:
 		if request.method == 'POST':
 
@@ -36,8 +47,18 @@ def home(request):
 			print(user)
 			if user is not None:
 					login(request,user)
+					count = Employee.objects.count()
+					totalcompany=Company.objects.count()
+					employee=Employee.objects.all()
+					totalposting=employee_company_relation.objects.count()
+		
+		
+		
+		
+					return render(request,'app/dashboard.html',{
+					'count' : count,'totalcompany':totalcompany,'totalposting':totalposting,'employee':employee
+				})
 					
-					return render(request,'app/dashboard.html')
    				 # A backend authenticated the credentials
 			else:
 				message='Username or Password is wrong!!'
@@ -60,8 +81,15 @@ login_required(login_url='login')
 def dashboard(request):
 	if request.user.is_authenticated:
 		count = Employee.objects.count()
+		totalcompany=Company.objects.count()
+		employee=Employee.objects.all()
+		totalposting=employee_company_relation.objects.count()
+		
+		
+		
+		
 		return render(request,'app/dashboard.html',{
-        'count' : count
+        'count' : count,'totalcompany':totalcompany,'totalposting':totalposting,'employee':employee
     })
 	else:
 		return render(request, 'app/login.html')
@@ -163,13 +191,35 @@ def view_guards(request):
 		return render(request, 'app/login.html')
 @login_required(login_url='login')
 def profile(request,id):
+	idvalue=employee_posting_history.objects.filter(employee_id=id).values('company_details')
+	#newvalue=employee_company_relation.objects.filter(pk=)
+	
+	employee_data=[]
+	for ele in idvalue:
+		for key, value in ele.items():
+		#	print(value)
+			employee_data.append(Company.objects.get(pk=value))
+			#print(employee)
+	
 	profileid=id
 	companylist=Company.objects.all()
 	data=Employee.objects.get(pk=id)
-	#print(data)
+	emp_data=employee_posting_history.objects.filter(employee_id=id).values('post_date')
 	
+	#print(data)
+	foo= zip(employee_data,emp_data)
+	companyname=employee_company_relation.objects.filter(employee_details=id).values('company_details')
+	for ele in companyname:
+		for key, value in ele.items():
+		#	print(value)
+			print(value)
+			#print(employee)
+	#....................images and files handling.........................
+	print(".....................................................")
+	print(value)
+	companyname=Company.objects.get(pk=value)
 #	return render(request,'app/profile.html',{'profileid':profileid})
-	return render(request,'app/profile.html',context={'data':data,'company':companylist})
+	return render(request,'app/profile.html',context={'data':data,'company':companylist,'employee_data':employee_data,'date':emp_data,'foo':foo,'companyname':companyname})
 
 @login_required(login_url='login')
 def addcompany(request):
@@ -465,3 +515,56 @@ def guard_update(request,id):
 		return render(request,'app/guard_add.html')
 
 	return render(request,'app/profile.html',{'company':companydata})
+
+@login_required(login_url='login')
+def photoupload(request,id):
+	if request.method=='POST':
+
+		findemployee=Employee.objects.get(pk=id)
+		uploadphoto = request.FILES['gphoto']
+		uploadpan = request.FILES['gpan']
+		uploadagree = request.FILES['gagree']
+		uploadothers = request.FILES['gothers']
+
+		#code for saving in database
+		findemployee.gphoto=uploadphoto
+		findemployee.save()
+		findemployee.gpan=uploadpan
+		findemployee.save()			
+		findemployee.gothers=uploadothers
+		findemployee.save()
+		findemployee.gagree=uploadagree
+		findemployee.save()
+
+		employeesdata=Employee.objects.all()
+
+		return render(request,'app/view_guard.html',{'employee':employeesdata})
+	else:
+		return render(request, 'app/login.html')
+
+
+@login_required(login_url='login')
+def exportcsv_guard(request):
+	guards=Employee.objects.all()
+	response=HttpResponse('text/csv')
+	response['Content-Disposition'] = 'attachment; filename=guards.csv'
+	writer=csv.writer(response)
+	   	
+	writer.writerow(['first name','middle name','last name','permanent address','temporary address','date of birth','join date','experince year','phone number','citizenship number','father name','grandfather name','education','pan number','maritual status'])
+	guard=guards.values_list('firstname','middlename','lastname','permanent_address','temporary_address','dateofbirth','joindate','expyear','pnumber','citizenship','fathername','grandfathername','education','pannumber','maritual')
+	for emp in guard:
+		writer.writerow(emp)
+	return response
+
+@login_required(login_url='login')
+def exportcsv_company(request):
+	guards=Company.objects.all()
+	response=HttpResponse('text/csv')
+	response['Content-Disposition'] = 'attachment; filename=company.csv'
+	writer=csv.writer(response)
+	   	
+	writer.writerow(['company name','branch name','address','website','telephone','PAN or VAT number'])
+	guard=guards.values_list('companyname','location','district','website','telephone','cpannumber')
+	for emp in guard:
+		writer.writerow(emp)
+	return response

@@ -97,33 +97,15 @@
                <span class="tooltip">Errors</span>
             </li>
             <li>
-               <a href="#">
-                  <i class="bx bx-heart"></i>
-                  <span class="links_name">Saved</span>
+               <a href="{% url 'logout' %}">
+                  <i class="bx bx-exit"></i>
+                  <span class="links_name">Logout</span>
                </a>
-               <span class="tooltip">Saved</span>
+               <span class="tooltip">Logout</span>
             </li>
-            <li>
-               <a href="#">
-                  <i class="bx bx-cog"></i>
-                  <span class="links_name">Setting</span>
-               </a>
-               <span class="tooltip">Setting</span>
-            </li>
-            <li class="profile">
-               <div class="profile-details">
-                  <!--<img src="profile.jpg" alt="profileImg">-->
-                  <div class="name_job">
-                     <div class="name">{{request.user.username}}</div>
-                     <div class="job">Web designer</div>
-                  </div>
-               </div>
-               <i
-                  class="bx bx-log-out"
-                  id="log_out"
-                  href={% url 'logout'%}
-               ></i>
-            </li>
+            
+           
+           
          </ul>
       </div>
      

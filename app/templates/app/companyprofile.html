@@ -33,6 +33,9 @@
             <button class="tablinks" style="color:white" onclick="openCity(event, 'Tokyo')">
                Employee lists
             </button>
+               <button class="tablinks" style="color:white" onclick="openCity(event, 'uploaded')">
+               Uploaded Decuments
+            </button>
             <!-- Trigger/Open The Modal -->
             <button id="myBtn" style="color:white">Edit</button>
 
@@ -326,7 +329,63 @@
             </div>
             </div>
             </div>
+            
+            <div id="uploaded" class="tabcontent">
+         
+            <div class="card">
+            <div class="card text-white bg-success">
+               <div class="card-body">
+                            
+               <div class="container">
+                  <div class="item">
+                     {% if data.regfiles %}
+                        <img class="img-thumbnail"  src="{{ data.regfiles.url }}"  alt="Responsive image" width="350" height="100" />
+                        {% else %}
+                        <p>No any registration files uploaded!!</p>
+                        {% endif %}
+                  </div>
+                  <div class="item">
+                  {% if data.panvat %}
+                        <img class="img-thumbnail"  src="{{ data.panvat.url }}"  alt="Responsive image" width="350" height="100" />
+                        {% else %}
+                     <p>No any PAN or VAT files uploaded!!</p>
+                      {% endif %}
+                  </div>
+                  <div class="item">
+                  {% if data.agree %}
+                        <img class="img-thumbnail"  src="{{ data.agree.url }}" alt="Responsive image" width="350" height="100" />
+                        {% else %}
+                     <p>No any Agreement files uploaded!!</p>
+                      {% endif %}
+                  </div>
+                  <div class="item">
+                  {% if data.other %}
+                        <img class="img-thumbnail"  src="{{ data.other.url }}" alt="Responsive image" width="350" height="100" />
+                        {% else %}
+                     <p>No any others file</p>
+                      {% endif %}
+                  </div>
+               </div>
+               <style>
+               .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
+.item {
+  padding: 20px;
+  width: 22%;
+  background-color: rgb(255,150,100);
+
+               </style>
+    
+
+            </div>
+            </div>
+            </div>
+            </div>
             <div id="Tokyo" class="tabcontent">
             <div class="card">
             <div class="card text-white bg-success">

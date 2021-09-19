@@ -5,12 +5,20 @@
          
              <div class="card" style= "padding-left:500px">
                         {% load static %}
+                        {% if data.gphoto %}
+                       <img class="img-thumbnail"  src="{{ data.gphoto.url }}"  alt="Responsive image" width="350" height="100" />
+                        {% else %}
                         <img class="img-thumbnail" src="{% static 'app/images/guard1.png' %}"
                               alt="Responsive image" width="350" height="100" />
+                        {% endif %}
                   <div class="card-body" style="justify-content: center">
-                     <h5 class="card-title">{{data.firstname}} {{data.id}}</h5>
+                     <h5 class="card-title">{{data.firstname}} {{data.middlename}} {{data.lastname}}</h5>
+                     {% if companyname.companyname %}
+                     <p class="card-text"><small class="text-muted">Age: {{data.age}} years old, Current working in <strong>{{companyname.companyname}}</small></p>
+                      {% else %}
+                     <p class="card-text"><small class="text-muted">Age: {{data.age}}, Not working in any company</small></p>
+                     {% endif %}
                     
-                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago #008040</small></p>
                   </div>
                   
                </div>
@@ -33,6 +41,12 @@
                </button>
                <button class="tablinks" style="color:white" onclick="openCity(event, 'posting')">
                   Guard Posting
+               </button>
+               <button class="tablinks" style="color:white" onclick="openCity(event, 'history')">
+                 History
+               </button>
+                <button class="tablinks" style="color:white" onclick="openCity(event, 'upload')">
+                 uploaded
                </button>
                               <!-- Trigger/Open The Modal -->
                <button id="myBtn" style="color:white" >Edit</button>
@@ -370,6 +384,66 @@
                 
             </div>
 
+
+
+ <div id="upload" class="tabcontent">
+         
+            <div class="card">
+            <div class="card text-white bg-success">
+               <div class="card-body">
+                            
+               <div class="container">
+                  <div class="item">
+                     {% if data.gphoto %}
+                        <img class="img-thumbnail"  src="{{ data.gphoto.url }}"  alt="Responsive image" width="350" height="100" />
+                        {% else %}
+                        <p>No any user photo is uploaded!!</p>
+                        {% endif %}
+                  </div>
+                  <div class="item">
+                  {% if data.gpan %}
+                        <img class="img-thumbnail"  src="{{ data.gpan.url }}"  alt="Responsive image" width="350" height="100" />
+                        {% else %}
+                     <p>No any PAN or VAT files uploaded!!</p>
+                      {% endif %}
+                  </div>
+                  <div class="item">
+                  {% if data.gagree %}
+                        <img class="img-thumbnail"  src="{{ data.gagree.url }}" alt="Responsive image" width="350" height="100" />
+                        {% else %}
+                     <p>No any Agreement files uploaded!!</p>
+                      {% endif %}
+                  </div>
+                  <div class="item">
+                  {% if data.gothers %}
+                        <img class="img-thumbnail"  src="{{ data.gothers.url }}" alt="Responsive image" width="350" height="100" />
+                        {% else %}
+                     <p>No any others file</p>
+                      {% endif %}
+                  </div>
+               </div>
+               <style>
+               .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.item {
+  padding: 20px;
+  width: 22%;
+  background-color: rgb(255,150,100);
+
+               </style>
+    
+
+            </div>
+            </div>
+            </div>
+            </div>
+</div>
+
             <!-- Tab content -->
             <div id="London" class="tabcontent">
               
@@ -536,7 +610,7 @@
             <div class="card">
              <div class="card text-white bg-success">
                <div class="card-body">
-                <form method="POST" action="{% url 'profile' data.id %}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'photoupload' data.id %}" enctype="multipart/form-data">
                      {% csrf_token %}
                   <div class="row">
                      <div class="col">
@@ -626,6 +700,43 @@
                     <hr>
                    
                   </div>
+                  </div>
+                  </div>
+                  </div>
+            </div>
+            <div id="history" class="tabcontent">
+                <div class="card mb-3">
+               <div class="card text-white bg-success">
+                <div class="card-body">
+                   <table id="datatablesSimple" style="color:white">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Posting Company</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                           <th>Date</th>
+                                            <th>Posting Company</th>
+                                            
+                                            
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                      {% for empl,date in foo %}
+                                      
+                                       <tr>
+                                            
+                                            <td>{{date.post_date}}</td>
+                                            <td>{{empl.companyname}}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
                   </div>
                   </div>
                   </div>

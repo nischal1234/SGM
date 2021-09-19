@@ -1,6 +1,8 @@
+from datetime import datetime
 from django.db import models
 from phone_field import PhoneField
-
+import datetime
+import time
 # Create your models here.
 class Company(models.Model):
     companyname=models.CharField(max_length=50)
@@ -53,6 +55,12 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.firstname + " " + self.lastname
+
+    @property
+    def age(self):
+        today=datetime.datetime.today()
+        age= today.year-self.dateofbirth.year-((today.month,today.day)<(self.dateofbirth.month,self.dateofbirth.day))
+        return age
 #company details
 # 
 class employee_company_relation(models.Model):
