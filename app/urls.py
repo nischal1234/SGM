@@ -23,4 +23,6 @@ urlpatterns = [
     path('app/profile/photoupload/<int:id>',views.photoupload,name='photoupload'),
     path('app/download/guards',views.exportcsv_guard,name="exportcsv_guard"),
     path('app/download/company',views.exportcsv_company,name="exportcsv_company"),
+    path('app/profile/reason/<int:id>',views.reason,name='reason'),
+    path('app/profile/status/update/<int:id>',views.status_update,name='status_update')
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

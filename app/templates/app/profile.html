@@ -3,16 +3,25 @@
    <div id="layoutSidenav_content">
       <main>
          
-             <div class="card" style= "padding-left:500px">
-                        {% load static %}
+             <div class="img-container" style= "text-align:center">
+                     {% load static %}
                         {% if data.gphoto %}
                        <img class="img-thumbnail"  src="{{ data.gphoto.url }}"  alt="Responsive image" width="350" height="100" />
                         {% else %}
                         <img class="img-thumbnail" src="{% static 'app/images/guard1.png' %}"
                               alt="Responsive image" width="350" height="100" />
                         {% endif %}
+                        
                   <div class="card-body" style="justify-content: center">
-                     <h5 class="card-title">{{data.firstname}} {{data.middlename}} {{data.lastname}}</h5>
+                     <h5 class="card-title">{{data.firstname}} {{data.middlename}} {{data.lastname}}
+                        {% if data.status %}
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAvElEQVRIie2SQRHEIAxFIwEJlVAJX0IlVAISvoNKWAlIWAmVgIRKYA/ADEu727TDrWQmFwjvEYJIj4cGYYRYhFiF8EIsrQVvIUKVvhUcB/CcUwuB/SPgyVlzfgliutVBhDtdp3G4+xkQRgFfhRjOBEaIVzqwpaEPVc2c6i7Cj2T7tbkAXoTHX+SqZ/JpbSw6LPfVcJue5NeQgxC2kqjhowKeE4VEAY/FTgkPQjgd9FvgLwi2OwItPGaPHjk+QDbmPHqrBeAAAAAASUVORK5CYII="/> 
+                      {% else %}
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAA/0lEQVRIie2SwW3DMAxFHyD6rhEyQkbwCBkhI2SEbJAROoJHyAgawSP4GNg0wB5ip4ogKzaaUxsCPEgg36c+BZ/4n2HgFbkoEkZcq8jlrQKKXBWxOEdc+y54ncLn7HGHXwsMVKdlATk/17qjgZ/PBv7lED3usOYFA+443QcDb+BHpFn1UkVCbgfptFFdmOGKhBvsigL3adzX1NApcs01JSLr4DlIeZDH5A+7ikBF6qkpxPaMSDNQ7RfgIbZrUWT6Qd3SkhWxgep0r/1Z8g12sV1zTQrfv4JHWQP0yDn23MBn4QCJl8Uckaboc17AtWsFFOk2C2yAmyK2WeATfze+ATMtJGKFHiImAAAAAElFTkSuQmCC"/>
+                      {% endif %}
+                      </h5>
+                     
+                     
                      {% if companyname.companyname %}
                      <p class="card-text"><small class="text-muted">Age: {{data.age}} years old, Current working in <strong>{{companyname.companyname}}</small></p>
                       {% else %}
@@ -39,15 +48,26 @@
                <button class="tablinks" style="color:white" onclick="openCity(event, 'Tokyo')">
                   Experinces
                </button>
+               {% if data.status %}
                <button class="tablinks" style="color:white" onclick="openCity(event, 'posting')">
                   Guard Posting
                </button>
+               {% endif %}
                <button class="tablinks" style="color:white" onclick="openCity(event, 'history')">
                  History
                </button>
                 <button class="tablinks" style="color:white" onclick="openCity(event, 'upload')">
                  uploaded
                </button>
+               {% if data.status %}
+                <button class="tablinks" style="color:white" onclick="openCity(event, 'reject')">
+                 Reject
+               </button>
+               {% endif %}
+               <button class="tablinks" style="color:white" onclick="openCity(event, 'status')">
+                 Status
+               </button>
+               
                               <!-- Trigger/Open The Modal -->
                <button id="myBtn" style="color:white" >Edit</button>
 
@@ -206,7 +226,7 @@
                <div class="row">
                   <div class="col">
                      <label for="text" class="mr-sm-2"
-                        >Primary Contact Number:</label
+                        >Primary Phone Number:</label
                      >
                      <input
                         type="tel"
@@ -218,7 +238,7 @@
                   </div>
                   <div class="col">
                      <label for="text" class="mr-sm-2"
-                        >Secondary Contact Number:</label
+                        >Secondary Phone Number:</label
                      >
                      <input
                         type="tel"
@@ -381,7 +401,10 @@
   cursor: pointer;
 }
 </style>
-                
+
+              
+               
+
             </div>
 
 
@@ -704,6 +727,97 @@
                   </div>
                   </div>
             </div>
+
+            <div id="status" class="tabcontent">
+                <div class="card mb-3">
+               <div class="card text-white bg-success">
+                <div class="card-body">
+                  <div class="row">
+                     <div class="col-sm-3">
+                      <h6 class="mb-0">Current status is:</h6>
+                    </div>
+                    <div class="col-sm-9 ">
+                    {% if data.status %}
+                    Active
+                    {% else %}
+                    Inactive
+                    {% endif %}
+                      
+                    </div>
+                    <hr>
+                     <div class="col-sm-3">
+                      <h6 class="mb-0">Select below option for change the Guard status:</h6>
+                    </div>
+                    <div class="col-sm-9 ">
+                      <form method="POST" action="{% url 'status_update' data.id %}" >
+                           {% csrf_token %}
+                           <select name="status"  class="form-control" id="status">
+                                 <option value="True">Active</option>
+                                 <option value="False">Inactive</option>
+                                
+                           </select>
+                                          
+                           <div class="col-sm-15">
+                              <input
+                                 class="btn btn-primary"
+                                 type="submit"
+                                 name="submit"
+                                 value="Update"
+                                 style="position: absolute; right: 0"
+                                 href="#"
+                              />
+                           </div>
+                        </form>
+                    </div>
+                    <hr>
+                   
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+            </div>
+
+
+            {% if data.status %}
+             <div id="reject" class="tabcontent">
+                <div class="card mb-3">
+               <div class="card text-white bg-success">
+                <div class="card-body">
+                  <div class="row">
+                     please select any reason
+                    <hr>
+                    <form method="POST" action="{% url 'reason' data.id %}" >
+                     {% csrf_token %}
+                      <label for="text" class="mr-sm-2">Reason:</label>
+                     <select name="reason"  class="form-control" id="bgroup">
+                        <option>Illigal Act</option>
+                        <option>Iresponsible Act</option>
+                        <option>Not Interested on duty</option>
+                        <option>Low Salary</option>
+                        <option>Disccusion</option>
+                        <option>Others</option>
+                        
+                     </select>
+                    <hr>
+                   
+                  </div>
+                   <div class="row">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                           <input
+                              class="btn btn-primary"
+                              type="submit"
+                              name="submit"
+                              value="Update"
+                              style="position: absolute; right: 0"
+                              href="#"
+                           />
+                        </div>
+                     </div>
+                  </div>
+                  </div>
+                  </div>
+            </div>
+           {% endif %}
             <div id="history" class="tabcontent">
                 <div class="card mb-3">
                <div class="card text-white bg-success">
@@ -741,6 +855,9 @@
                   </div>
                   </div>
             </div>
+        
+        
+
             <div id="posting" class="tabcontent">
             
                <div class="card">
@@ -815,6 +932,68 @@
          border: 1px solid #ccc;
          border-top: none;
       }
+       /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+} 
    </style>
    <script>
    //modal function

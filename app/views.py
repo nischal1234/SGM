@@ -122,7 +122,8 @@ def guard_add(request):
 		gender=request.POST.get('gender')
 		maritual=request.POST.get('mstatus')
 		blood=request.POST.get('bgroup')
-		if Employee.objects.filter(firstname=fname,middlename=mname,lastname=lname,fathername=fathername).exists() or Employee.objects.filter(citizenship=citizenship).exists():
+		idnumber=request.POST.get('idnumber')
+		if Employee.objects.filter(firstname=fname,middlename=mname,lastname=lname,fathername=fathername,idnumber=idnumber).exists() or Employee.objects.filter(citizenship=citizenship).exists():
 			messages="Security guard is already registered !!"
 			return render(request,'app/guard_add.html',{'message_does': messages})
 		
@@ -151,7 +152,8 @@ def guard_add(request):
 				skincolor=skin,
 				gender=gender,
 				maritual=maritual,
-				bloodgroup=blood	
+				bloodgroup=blood,
+				idnumber=idnumber	
 				)
 
 			p.save()
@@ -568,3 +570,55 @@ def exportcsv_company(request):
 	for emp in guard:
 		writer.writerow(emp)
 	return response
+
+@login_required(login_url='login')
+def reason(request,id):
+	if request.method=='POST':
+		print("by status")
+		reason_name=request.POST.get('reason')
+		
+		findemployee=Employee.objects.get(pk=id)
+		findemployee.reason=reason_name
+		findemployee.save()
+		companylist=Company.objects.all()
+		data=Employee.objects.get(pk=id)
+		#print(data)
+		
+#	return render(request,'app/profile.html',{'profileid':profileid})
+		return render(request,'app/profile.html',context={'data':data,'company':companylist})
+
+	else:
+		companylist=Company.objects.all()
+		data=Employee.objects.get(pk=id)
+		#print(data)
+		
+#	return render(request,'app/profile.html',{'profileid':profileid})
+		return render(request,'app/profile.html',context={'data':data,'company':companylist})
+
+@login_required(login_url='login')
+def status_update(request,id):
+	
+	if request.method=='POST':
+		print("i am here status")
+		status=request.POST.get('status')
+		print(status)
+		findemployee=Employee.objects.get(pk=id)
+		findemployee.status=status
+		findemployee.save()
+		print("your status is here..................................")
+		
+		companylist=Company.objects.all()
+		data=Employee.objects.get(pk=id)
+		#print(data)
+		
+#	return render(request,'app/profile.html',{'profileid':profileid})
+		return render(request,'app/profile.html',context={'data':data,'company':companylist})
+
+	else:
+		companylist=Company.objects.all()
+		data=Employee.objects.get(pk=id)
+		#print(data)
+		
+#	return render(request,'app/profile.html',{'profileid':profileid})
+		return render(request,'app/profile.html',context={'data':data,'company':companylist})
+

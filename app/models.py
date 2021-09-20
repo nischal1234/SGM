@@ -23,6 +23,9 @@ class Company(models.Model):
 
 
 class Employee(models.Model):
+    idnumber=models.IntegerField(max_length=10,unique=True,null=True)
+    status=models.BooleanField(null=True)
+    reason=models.CharField(max_length=30,null=True)
     firstname=models.CharField(max_length=30)
     middlename=models.CharField(max_length=30)
     lastname=models.CharField(max_length=30)
