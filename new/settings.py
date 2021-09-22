@@ -20,15 +20,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pr0mkhhat9x1%oo2^j%&tv&+x$#yvl=(-*%-5m!1=rfy^f*m1('
+with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
+    SECRET_KEY=f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['office.nischalmandal.com.np','www.office.nischalmandal.com.np']
 
-
+SESSION_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE=True
+SECURE_SSL_REDIRECT=True
 # Application definition
+#HSTS setting
+SECURE_HSTS_SECONDS=31536000 # 1 year
+SECURE_HSTS_PRELOAD=True
+SECURE_HSTS_INCLUDE_SUBDOMAINS=True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
