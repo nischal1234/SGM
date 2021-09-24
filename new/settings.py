@@ -24,7 +24,7 @@ SECRET_KEY = 'pr0mkhhat9x1%oo2^j%&tv&+x$#yvl=(-*%-5m!1=rfy^f*m1('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 ALLOWED_HOSTS = ['biratgorkha.herokuapp.com','127.0.0.1']
 
 
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'new.urls'
