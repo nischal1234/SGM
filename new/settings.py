@@ -24,9 +24,15 @@ SECRET_KEY = 'pr0mkhhat9x1%oo2^j%&tv&+x$#yvl=(-*%-5m!1=rfy^f*m1('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-ALLOWED_HOSTS = ['biratgorkha.herokuapp.com','127.0.0.1']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+ALLOWED_HOSTS = ['biratgorkha.herokuapp.com','127.0.0.1']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Application definition
 
