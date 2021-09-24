@@ -27,7 +27,8 @@ with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
 DEBUG = False
 
 ALLOWED_HOSTS = ['office.nischalmandal.com.np','www.office.nischalmandal.com.np']
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 SESSION_COOKIE_SECURE=True
 CSRF_COOKIE_SECURE=True
 SECURE_SSL_REDIRECT=True
